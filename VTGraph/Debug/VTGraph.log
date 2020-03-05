@@ -1,0 +1,7 @@
+﻿  frame.cpp
+F:\Programacion\Cpp\GitHub\VTGraph\VTGraph\ui\frame.cpp(67,19): warning C4566: el carácter representado por el nombre de carácter universal '\u2550' no se puede representar en la página de códigos actual (1252)
+  geometric.cpp
+  ui_component.cpp
+  Generando código...
+  debug_tools.c
+  VTGraph.vcxproj -> F:\Programacion\Cpp\GitHub\VTGraph\Debug\VTGraph.exe

@@ -47,12 +47,12 @@ void Frame::visible(void)
 
 const short Frame::get_max_width(void) const
 {
-	return get_size().cols;
+	return this->get_width();
 }
 
 const short Frame::get_max_height(void) const
 {
-	return get_size().rows;
+	return this->get_height();
 }
 
 void Frame::_draw(const UIComponent& uic)
@@ -60,14 +60,15 @@ void Frame::_draw(const UIComponent& uic)
 	//_drawer->draw_rect(Rect(_curr_col, _curr_row, uic.get_size().cols, uic.get_size().rows), { 0, 0, 0 });
 	// Graphics.draw_rect();
 	//std::cout << uic.get_size().cols << std::endl;
-	Rect rect(1, 1, 2, 80);
+	Rect rect(_curr_col, _curr_row, uic.get_width(), uic.get_height());
 	dwchar_t dwch;
 	for (auto& i : rect.get_bounds()) {
-		//_drawable[i.get_x() - 1][i.get_y() - 1] = { (char*)"\u2550", i.get_x() - 1, i.get_y() - 1 };
-		dwch = { (char*)"\u2550", i.get_x() , i.get_y() };
+		//_drawable[i.get_x() - 1][i.get_y() - 1] = { (char*)u8"\u2550", i.get_x(), i.get_y() };
+		dwch = { (char*)u8"\u2550", i.get_x() , i.get_y() };
 		std::cout << dwch;
-
 	}
+	_curr_row = (rect.get_width() == this->get_width()) ? _curr_row + rect.get_height() + 1 : _curr_row;
+	_curr_col = (rect.get_width() == this->get_width()) ? 1 : _curr_col + rect.get_width();
 /*
 	for (int i = 0; i < uic.get_size().cols; ++i)
 		for (int j = 0; j < uic.get_size().rows; ++j)

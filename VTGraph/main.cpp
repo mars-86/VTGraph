@@ -17,10 +17,10 @@ int main(int argc, char* argv[]) {
     os::_init_instance(&size);
 
 	ui::Frame frame(size.cs_col, size.cs_row);
-	ui::TitleBar tbar("I'm a title bar", frame.get_max_width(), ui::POSITION::TOP);
-    ui::EuclideanSpace eusp(ui::EUCLIDEAN_CONTEXT::_2D, 20, frame.get_max_height(), ui::POSITION::TOP);
+	ui::TitleBar tbar("I'm a title bar", frame.get_width(), ui::POSITION::TOP);
+    ui::EuclideanSpace eusp(ui::EUCLIDEAN_CONTEXT::_2D, 20, frame.get_height(), ui::POSITION::TOP);
 	frame.add("titlebar", tbar);
-	//frame.add("eusp_2d", eusp);
+	frame.add("eusp_2d", eusp);
 	frame.visible();
 	//std::cout << "W: " << frame.get_max_width() << std::endl << "H: " << frame.get_max_height() << std::endl;
 

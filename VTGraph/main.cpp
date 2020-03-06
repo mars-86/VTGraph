@@ -5,6 +5,7 @@
 #include "ui/ui.h"
 #include "gfx/gfx.h"
 #include "os/os.h"
+#include "vterm/vterm.h"
 
 #include <thread>
 #include <ctime>
@@ -16,11 +17,17 @@ int main(int argc, char* argv[]) {
     os::ContainerSize size;
     os::_init_instance(&size);
 
+	vterm::VTerm vt;
+	vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
+	vt.set_title("VTERM");
+
 	ui::Frame frame(size.cs_col, size.cs_row);
-	ui::TitleBar tbar("I'm a title bar", frame.get_width(), ui::POSITION::TOP);
-    ui::EuclideanSpace eusp(ui::EUCLIDEAN_CONTEXT::_2D, 20, frame.get_height(), ui::POSITION::TOP);
+	ui::TitleBar tbar("I'm a title bar", frame.get_max_width(), ui::POSITION::TOP);
+    ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 10, frame.get_max_height() - 6, ui::POSITION::TOP);
+    ui::EuclideanSpace eusp3d(ui::EUCLIDEAN_CONTEXT::_3D, 10, frame.get_max_height() - 6, ui::POSITION::TOP);
 	frame.add("titlebar", tbar);
-	frame.add("eusp_2d", eusp);
+	frame.add("eusp_2d", eusp2d);
+	frame.add("eusp_3d", eusp3d);
 	frame.visible();
 	//std::cout << "W: " << frame.get_max_width() << std::endl << "H: " << frame.get_max_height() << std::endl;
 

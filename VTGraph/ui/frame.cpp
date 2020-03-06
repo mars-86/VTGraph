@@ -47,12 +47,12 @@ void Frame::visible(void)
 
 const short Frame::get_max_width(void) const
 {
-	return get_size().cols;
+	return this->get_width();
 }
 
 const short Frame::get_max_height(void) const
 {
-	return get_size().rows;
+	return this->get_height();
 }
 
 void Frame::_draw(const UIComponent& uic)
@@ -60,14 +60,15 @@ void Frame::_draw(const UIComponent& uic)
 	//_drawer->draw_rect(Rect(_curr_col, _curr_row, uic.get_size().cols, uic.get_size().rows), { 0, 0, 0 });
 	// Graphics.draw_rect();
 	//std::cout << uic.get_size().cols << std::endl;
-	Rect rect(1, 1, 2, 80);
+	Rect rect(_curr_col, _curr_row, uic.get_width(), uic.get_height(), { 150, 150, 150 });
 	dwchar_t dwch;
 	for (auto& i : rect.get_bounds()) {
-		//_drawable[i.get_x() - 1][i.get_y() - 1] = { (char*)"\u2550", i.get_x() - 1, i.get_y() - 1 };
-		dwch = { (char*)"\u2550", i.get_x() , i.get_y() };
-		std::cout << dwch;
-
+		std::cout << (_drawable[i.get_y() - 1][i.get_x() - 1] = { (char*)u8"\u2550", i.get_x(), i.get_y() });
+		//dwch = { (char*)u8"\u2550", i.get_x() , i.get_y() };
+		//std::cout << _drawable[i.get_y() - 1][i.get_x() - 1];
 	}
+	_curr_row = (rect.get_width() == this->get_width()) ? _curr_row + rect.get_height() : _curr_row;
+	_curr_col = (rect.get_width() == this->get_width()) ? 1 : _curr_col + rect.get_width();
 /*
 	for (int i = 0; i < uic.get_size().cols; ++i)
 		for (int j = 0; j < uic.get_size().rows; ++j)
@@ -80,7 +81,6 @@ void Frame::_draw(const UIComponent& uic)
 	//_drawer->draw(el);
 }
 
-
 void Frame::_init(void)
 {
 	//_drawer = new Graphic(_drawable);
@@ -90,14 +90,14 @@ void Frame::_init(void)
 
 void Frame::_alloc(void)
 {
-	_drawable = new dwchar_t* [_size.rows];
+	_drawable = new dwchar_t* [get_height() + 1];
 	for (int i = 0; i < _size.rows; ++i)
-		_drawable[i] = new dwchar_t[_size.cols];
+		_drawable[i] = new dwchar_t[get_width() + 1];
 }
 
 void Frame::_dealloc(void)
 {
-	for (int i = 0; i < _size.rows; ++i)
+	for (int i = 0; i < get_height(); ++i)
 		delete[] _drawable[i];
 	delete[] _drawable;
 	//delete _drawer;

@@ -3,7 +3,7 @@
 namespace ui {
 
 TitleBar::TitleBar(std::string title, short width, POSITION position)
-	: Bar( {width, 3} ), _title(title) {}
+	: Bar( {width, 2} ), _title(title) {}
 
 TitleBar::~TitleBar() {}
 

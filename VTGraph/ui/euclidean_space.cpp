@@ -3,7 +3,7 @@
 namespace ui {
 
 EuclideanSpace::EuclideanSpace(short width, short height, POSITION position)
-	: UIComponent({ width, height }) {}
+	: UIComponent( {width, height} ) {}
 
 EuclideanSpace::EuclideanSpace(EUCLIDEAN_CONTEXT e_context, short width, short height, POSITION position)
 	: UIComponent( {width, height} ), _e_context(e_context) {}

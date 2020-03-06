@@ -3,7 +3,7 @@
 #pragma once
 
 #include <iostream>
-#include <map>
+#include <vector>
 #include "component.h"
 #include "ui_component.h"
 #include "charset.h"
@@ -23,7 +23,7 @@ public:
 	// virtual void on_drag(void) = 0;
 	// virtual void on_hover(void) = 0;
 protected:
-	std::map<std::string, UIComponent&> _child;
+	std::vector<std::pair<std::string, UIComponent&>> _child;
 	Charset _charset;
 };
 

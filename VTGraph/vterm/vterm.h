@@ -10,7 +10,11 @@ namespace vterm {
 class VTerm {
 public:
 	VTerm() { set_screen_buffer(VTERM_ALTERNATE_SCREEN_BUFFER); }
-	virtual ~VTerm() { set_screen_buffer(VTERM_MAIN_SCREEN_BUFFER); }
+	virtual ~VTerm()
+	{ 
+		set_cursor_visibility(VTERM_CURSOR_SHOW);
+		set_screen_buffer(VTERM_MAIN_SCREEN_BUFFER);
+	}
 
 protected:
 	typedef struct _Symbol {

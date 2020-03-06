@@ -3,6 +3,7 @@
 #pragma once
 
 #include "../gfx/rect.h"
+#include "../gfx/point2d.h"
 
 namespace ui {
 
@@ -37,6 +38,26 @@ public:
 	const RegLimit& get_limit(void) const
 	{
 		return _limit;
+	}
+	
+	const gfx::Point2D& get_top_left(void) const
+	{
+		return { _limit.top, _limit.left };
+	}
+	
+	const gfx::Point2D& get_bottom_left(void) const
+	{
+		return { _limit.bottom, _limit.left };
+	}
+	
+	const gfx::Point2D& get_top_right(void) const
+	{
+		return { _limit.top, _limit.right };
+	}
+	
+	const gfx::Point2D& get_bottom_right(void) const
+	{
+		return { _limit.bottom, _limit.right };
 	}
 private:
 	RegLimit _limit;

@@ -5,12 +5,12 @@ namespace ui {
 Frame::Frame(short width, short height)
 	: Container( {width, height} )
 {
-	_init();
+	_drawer = new Graphic(width, height);
 }
 
 Frame::~Frame()
 {
-	_dealloc();
+	delete _drawer;
 }
 
 /*
@@ -42,7 +42,7 @@ void Template::add_element(Element& el)
 void Frame::visible(void)
 {
 	for (auto& i : _child)
-		_draw(i.second);
+		_drawer->draw_component(i.second);
 }
 
 const short Frame::get_max_width(void) const
@@ -60,6 +60,8 @@ void Frame::_draw(const UIComponent& uic)
 	//_drawer->draw_rect(Rect(_curr_col, _curr_row, uic.get_size().cols, uic.get_size().rows), { 0, 0, 0 });
 	// Graphics.draw_rect();
 	//std::cout << uic.get_size().cols << std::endl;
+	
+/*
 	Rect rect(_curr_col, _curr_row, uic.get_width(), uic.get_height(), { 150, 150, 150 });
 	dwchar_t dwch;
 	for (auto& i : rect.get_bounds()) {
@@ -69,6 +71,9 @@ void Frame::_draw(const UIComponent& uic)
 	}
 	_curr_row = (rect.get_width() == this->get_width()) ? _curr_row + rect.get_height() : _curr_row;
 	_curr_col = (rect.get_width() == this->get_width()) ? 1 : _curr_col + rect.get_width();
+*/
+
+
 /*
 	for (int i = 0; i < uic.get_size().cols; ++i)
 		for (int j = 0; j < uic.get_size().rows; ++j)
@@ -79,28 +84,6 @@ void Frame::_draw(const UIComponent& uic)
 		for( int j = 0; j < uic.get_size().cols; ++j )
 			std::cout << ".";*/
 	//_drawer->draw(el);
-}
-
-void Frame::_init(void)
-{
-	//_drawer = new Graphic(_drawable);
-	//_drawer = new Graphic();
-	_alloc();
-}
-
-void Frame::_alloc(void)
-{
-	_drawable = new dwchar_t* [get_height() + 1];
-	for (int i = 0; i < _size.rows; ++i)
-		_drawable[i] = new dwchar_t[get_width() + 1];
-}
-
-void Frame::_dealloc(void)
-{
-	for (int i = 0; i < get_height(); ++i)
-		delete[] _drawable[i];
-	delete[] _drawable;
-	//delete _drawer;
 }
 
 /*void VTContainer::_set_threshold(short row_ini, short col_ini, short row_max, short col_max)

@@ -5,6 +5,7 @@
 #include "../gfx/line.h"
 #include "../gfx/rect.h"
 #include "../vterm/vterm.h"
+#include "region.h"
 #include "ui_component.h"
 
 namespace ui {
@@ -20,6 +21,8 @@ public:
 	void draw_rect(const Rect& rect, Color color);
 	void fill_rect(const Rect& rect, Color color);
 	void draw_component(const UIComponent& uic);
+	const void set_region(const UIComponent& uic, const gfx::Rect& rect);
+	const Region& get_region(const gfx::Rect& rect);
 private:
 	dwchar_t** _drawable = NULL;
 	short _dwable_w, _dwable_h;

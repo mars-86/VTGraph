@@ -32,7 +32,7 @@ public:
 
 	virtual inline void set_cursor_visibility(const char *visibility)
 	{
-		std::cout << VTERM_ESCAPE << visibility;
+		std::cout << visibility;
 	}
 
 	virtual inline void set_cursor_position(const char position, short n)

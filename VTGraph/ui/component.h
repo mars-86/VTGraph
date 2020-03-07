@@ -2,6 +2,8 @@
 #define UI_COMPONENT_H
 #pragma once
 
+#include "region.h"
+
 namespace ui {
 
 typedef struct _ComponentSize {
@@ -11,7 +13,7 @@ typedef struct _ComponentSize {
 
 class Component {
 public:
-	Component() : _size( {0, 0} ) {}
+	Component() : _size({ 0, 0 }) {}
 	Component(const ComponentSize& size) : _size({ size.cols, size.rows }) {}
 	virtual ~Component() {}
 	virtual void set_size(short width, short height) { _size = {height, width}; }
@@ -20,6 +22,7 @@ public:
 	virtual const short get_height(void) const { return _size.rows; }
 protected:
 	ComponentSize _size;
+	Region _region;
 };
 
 } // namespace ui

@@ -18,13 +18,14 @@ int main(int argc, char* argv[]) {
     os::_init_instance(&size);
 
 	vterm::VTerm vt;
-	vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
+    // std::cout << "\x1B[?25h";
+	// vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
 	vt.set_title("VTERM");
 
 	ui::Frame frame(size.cs_col, size.cs_row);
 	ui::TitleBar tbar("I'm a title bar", frame.get_max_width(), ui::POSITION::TOP);
 	ui::Grid grid(frame.get_max_height() - 6, 10);
-    ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 10, frame.get_max_height() - 6, ui::POSITION::TOP);
+    ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width(), frame.get_max_height() - 6, ui::POSITION::TOP);
     //ui::EuclideanSpace eusp3d(ui::EUCLIDEAN_CONTEXT::_3D, 10, frame.get_max_height() - 6, ui::POSITION::TOP);
 	frame.add("titlebar", tbar);
 	frame.add("grid", grid);

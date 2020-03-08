@@ -2,11 +2,14 @@
 #define UI_GRAPHIC_H
 #pragma once
 
+#include "../gfx/point2d.h"
 #include "../gfx/line.h"
 #include "../gfx/rect.h"
 #include "../vterm/vterm.h"
 #include "region.h"
+#include "container.h"
 #include "ui_component.h"
+#include "table.h"
 
 namespace ui {
 
@@ -20,7 +23,9 @@ public:
 
 	void draw_rect(const Rect& rect, Color color);
 	void fill_rect(const Rect& rect, Color color);
+	void draw_component(const Container& uic);
 	void draw_component(const UIComponent& uic);
+	void draw_component(const Table& uic);
 	const void set_region(const UIComponent& uic, const gfx::Rect& rect);
 	const Region& get_region(const gfx::Rect& rect);
 private:

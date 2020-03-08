@@ -17,6 +17,7 @@ public:
 	EuclideanSpace(EUCLIDEAN_CONTEXT context, short width, short height, POSITION position);
 	~EuclideanSpace();
 
+	bool is_euclidean_space(void) const;
 private:
 	EUCLIDEAN_CONTEXT _e_context = EUCLIDEAN_CONTEXT::_2D;
 };

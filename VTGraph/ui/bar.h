@@ -8,7 +8,7 @@ namespace ui {
 
 class Bar : public UIComponent {
 public:
-	Bar(const ComponentSize& size) : UIComponent(size) {}
+	Bar(const ComponentSize& size) : UIComponent(size, "Bar") {}
 	//Bar(const ComponentSize& size, const POSITION position) : UIComponent((size, position) {}
 	virtual ~Bar() {}
 protected:

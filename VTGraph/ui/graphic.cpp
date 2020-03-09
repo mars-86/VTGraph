@@ -49,7 +49,7 @@ void Graphic::draw_rect(const Rect& rect, Color color)
 	// BOTTOM RIGHT
 	if (ori.get_x() + rect.get_width() - 1 == _dwable_w)
 		std::cout << (_drawable[ori.get_y() + rect.get_height() - 1][ori.get_x() + rect.get_width() - 1] = { (char*)u8"\u255D", ori.get_x() + rect.get_width(), ori.get_y() + rect.get_height() });
-	if ((ori.get_y() + rect.get_height() - 1 < _dwable_h) && (ori.get_x() + rect.get_width() - 1 < _dwable_w))
+	else if ((ori.get_y() + rect.get_height() - 1 < _dwable_h) && (ori.get_x() + rect.get_width() - 1 < _dwable_w))
 		std::cout << (_drawable[ori.get_y() + rect.get_height() - 1][ori.get_x() + rect.get_width() - 1] = { (char*)u8"\u2563", ori.get_x() + rect.get_width(), ori.get_y() + rect.get_height() });
 	else
 		std::cout << (_drawable[ori.get_y() + rect.get_height() - 1][ori.get_x() + rect.get_width() - 1] = { (char*)u8"\u2569", ori.get_x() + rect.get_width(), ori.get_y() + rect.get_height() });
@@ -85,6 +85,18 @@ void Graphic::draw_component(const EuclideanSpace& espc)
 	Rect rect(_curr_col, _curr_row, espc.get_width(), espc.get_height());
 	fill_rect(rect, { 150, 150, 150 });
 	draw_rect(rect, { 150, 150, 150 });
+	// Draw e context
+	Point2D ori = rect.get_origin();
+	int curr_row = ori.get_y() + 1, curr_col = ori.get_x() + 1;
+	if (espc.get_context() == "2D") {
+		for (int i = 0; i < rect.get_height() - 1; ++i, ++curr_row)
+			_draw_at((char*)u8"\u2502", curr_col + ((rect.get_width() - 1) / 2), curr_row);
+		curr_row = ori.get_y() + 1;
+		for (int i = 0; i < rect.get_width() - 1; ++i, ++curr_col)
+			_draw_at((char*)u8"\u2500", curr_col, curr_row + ((rect.get_height() - 1) / 2));
+		curr_col = ori.get_x() + 1;
+		_draw_at((char*)u8"\u253C", curr_col + ((rect.get_width() - 1) / 2), curr_row + ((rect.get_height() - 1) / 2));
+	}
 	_set_row_col(rect);
 }
 
@@ -99,6 +111,7 @@ void Graphic::draw_component(const Table& tab)
 	int curr_row = ori.get_y() + 1, curr_col = ori.get_x() + 1;
 	for (uint32_t i = 0; i < t.size(); ++i) {
 		for (uint32_t j = 0; j < t[i].size() && t[i].size() <= t[0].size(); ++j) {
+			// TODO: change hardcoded offset
 			_draw_at((char*)t[i][j].c_str(), (curr_col + 4), curr_row);
 			_draw_at((char*)u8"\u2502", (curr_col + 9), curr_row);
 			curr_col += 10;
@@ -108,7 +121,6 @@ void Graphic::draw_component(const Table& tab)
 			_draw_at((char*)((k % 10 == 0) ? u8"\u253C" : u8"\u2500"), (curr_col + k - 1), curr_row);
 		++curr_row;
 	}
-	// draw_component(tab, rect);
 	_set_row_col(rect);
 }
 
@@ -140,52 +152,6 @@ void Graphic::draw_component(const UIComponent& uic)
 	_curr_row = (rect.get_width() == _dwable_w) ? _curr_row + rect.get_height() : _curr_row;
 	_curr_col = (rect.get_width() == _dwable_w) ? 1 : _curr_col + rect.get_width();
 }*/
-
-void Graphic::draw_component(const Table& tab, const Rect& rect) {
-	Point2D ori = rect.get_origin();
-	const std::vector<std::vector<std::string>> data = tab.get_table();
-	int c = 0;
-	//for ()
-	set_cursor_pos((short)(ori.get_x() + 1 + 4), (short)(ori.get_y() + 1));
-	std::cout << "X";
-	set_cursor_pos((short)(ori.get_x() + 1 + 9), (short)(ori.get_y() + 1));
-	std::cout << u8"\u2502";
-	set_cursor_pos((short)(ori.get_x() + 1 + 9 + 5), (short)(ori.get_y() + 1));
-	std::cout << "Y";
-	set_cursor_pos((short)(ori.get_x() + 1 + 19), (short)(ori.get_y() + 1));
-	std::cout << u8"\u2502";
-	set_cursor_pos((short)(ori.get_x() + 1 + 19 + 5), (short)(ori.get_y() + 1));
-	std::cout << "Z";
-	for (int i = 1; i < 30; ++i) {
-		set_cursor_pos((short)(ori.get_x() + i), (short)(ori.get_y() + 2));
-		std::cout << ((i % 10 == 0) ? u8"\u253C" : u8"\u2500");
-	}
-	for (int j = 3; j < 29; ++j) {
-		set_cursor_pos((short)(ori.get_x() + 1 + 4), (short)(ori.get_y() + j));
-		std::cout << c++;
-		set_cursor_pos((short)(ori.get_x() + 1 + 9), (short)(ori.get_y() + j));
-		std::cout << u8"\u2502";
-		set_cursor_pos((short)(ori.get_x() + 1 + 9 + 5), (short)(ori.get_y() + j));
-		std::cout << c++;
-		set_cursor_pos((short)(ori.get_x() + 1 + 19), (short)(ori.get_y() + j));
-		std::cout << u8"\u2502";
-		set_cursor_pos((short)(ori.get_x() + 1 + 19 + 5), (short)(ori.get_y() + j));
-		std::cout << c++;
-		j++;
-		for (int i = 1; i < 30; ++i) {
-			set_cursor_pos((short)(ori.get_x() + i), (short)(ori.get_y() + j));
-			std::cout << ((i % 10 == 0) ? u8"\u253C" : u8"\u2500");
-		}
-	}
-	std::cout << data.size();
-	std::getchar();
-	for (uint32_t i = 0; i < data.size(); ++i) {
-		auto row = &data[i];
-		for (auto k = row->begin(); k != row->end(); ++k)
-			_draw_at((char*)"HOLA", 10, 10);
-	}
-		//std::cout << (_drawable[ori.get_y()][ori.get_x()] = { (char*)"Naada", ori.get_x() + 1, ori.get_y() + 1 });
-}
 
 void Graphic::_set_row_col(const Rect& drawed)
 {

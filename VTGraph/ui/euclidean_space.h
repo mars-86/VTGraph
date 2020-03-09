@@ -6,9 +6,17 @@
 
 namespace ui {
 
-enum EUCLIDEAN_CONTEXT {
+enum class EUCLIDEAN_CONTEXT {
 	_2D,
 	_3D
+};
+
+enum class EUCLIDEAN_AXIS {
+	SIGNED,
+	SIGNED_X,
+	SIGNED_Y,
+	UNSIGNED_X,
+	UNSIGNED_Y	
 };
 
 class EuclideanSpace : public UIComponent {
@@ -18,8 +26,10 @@ public:
 	~EuclideanSpace();
 
 	bool is_euclidean_space(void) const;
+	const std::string& get_context(void) const;
 private:
-	EUCLIDEAN_CONTEXT _e_context = EUCLIDEAN_CONTEXT::_2D;
+	std::string _e_context = "2D";
+	EUCLIDEAN_AXIS _e_axis = EUCLIDEAN_AXIS::SIGNED;
 };
 
 }

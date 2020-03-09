@@ -9,13 +9,13 @@ namespace ui {
 }*/
 
 Table::Table(std::vector<std::string>& headers)
-	: UIComponent({ (short)headers.size() * 10, 2 }, "Table")
+	: UIComponent({ (short)(headers.size() * 10), 2 }, "Table")
 {
 	_table.push_back(headers);
 }
 
 Table::Table(std::vector<std::string>& headers, std::vector<std::vector<std::string>>& data)
-	: UIComponent({ (short)headers.size() * 10, (short)(data.size() + 2) }, "Table") // data.size + header
+	: UIComponent({ (short)(headers.size() * 10), (short)(data.size() + 2) }, "Table") // data.size + header
 {
 	_table.push_back(headers);
 	for (auto& i : data)
@@ -23,7 +23,7 @@ Table::Table(std::vector<std::string>& headers, std::vector<std::vector<std::str
 }
 
 Table::Table(short height, std::vector<std::string>& headers, std::vector<std::vector<std::string>>& data)
-	: UIComponent({ (short)headers.size() * 10, height }, "Table")
+	: UIComponent({ (short)(headers.size() * 10), height }, "Table")
 {
 	_table.push_back(headers);
 	for (auto& i : data)
@@ -48,6 +48,11 @@ void Table::add_row(const std::vector<std::string>& row)
 bool Table::is_table(void) const
 {
 	return true;
+}
+
+short Table::get_col_width(void) const
+{
+	return _col_width;
 }
 
 const std::vector<std::vector<std::string>>& Table::get_table(void) const

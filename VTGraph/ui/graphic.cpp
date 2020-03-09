@@ -96,20 +96,18 @@ void Graphic::draw_component(const Table& tab)
 	// Draw table
 	Point2D ori = rect.get_origin();
 	const std::vector<std::vector<std::string>> t = tab.get_table();
-	int curr_x = ori.get_x() + 1, curr_y = ori.get_y() + 1;
-	for (int i = 0; i < t.size(); ++i) {
-		for (int j = 0; j < t[i].size(); ++j) {
-			_draw_at((char*)t[i][j].c_str(), (curr_x + 4), (curr_y));
-			_draw_at((char*)u8"\u2502", (curr_x + 4), (curr_y));
-			curr_x += 8;
+	int curr_row = ori.get_y() + 1, curr_col = ori.get_x() + 1;
+	for (uint32_t i = 0; i < t.size(); ++i) {
+		for (uint32_t j = 0; j < t[i].size() && t[i].size() <= t[0].size(); ++j) {
+			_draw_at((char*)t[i][j].c_str(), (curr_col + 4), curr_row);
+			_draw_at((char*)u8"\u2502", (curr_col + 9), curr_row);
+			curr_col += 10;
 		}
-		++curr_y;
-		for (int k = 1; k < 30; ++k) {
-			_draw_at((char*)((k % 10 == 0) ? u8"\u253C" : u8"\u2500"), (ori.get_x() + k), (ori.get_y() + curr_y));
-		}
-		++curr_y;
+		++curr_row, curr_col = ori.get_x() + 1;
+		for (int k = 1; k < rect.get_width(); ++k)
+			_draw_at((char*)((k % 10 == 0) ? u8"\u253C" : u8"\u2500"), (curr_col + k - 1), curr_row);
+		++curr_row;
 	}
-
 	// draw_component(tab, rect);
 	_set_row_col(rect);
 }
@@ -181,7 +179,7 @@ void Graphic::draw_component(const Table& tab, const Rect& rect) {
 	}
 	std::cout << data.size();
 	std::getchar();
-	for (int i = 0; i < data.size(); ++i) {
+	for (uint32_t i = 0; i < data.size(); ++i) {
 		auto row = &data[i];
 		for (auto k = row->begin(); k != row->end(); ++k)
 			_draw_at((char*)"HOLA", 10, 10);

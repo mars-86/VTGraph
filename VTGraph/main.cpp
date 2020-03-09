@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
 	// vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
 	vt.set_title("VTERM");
     std::vector<std::string> head = { "X", "Y", "Z" };
-    std::vector<std::vector<std::string>> data = { {"1","2"}, {"5", "10"} };
+    std::vector<std::vector<std::string>> data = { {"1","2"}, {"5", "10", "8"}, {"3", "4"} };
 
 	ui::Frame frame("VIRTUAL TERMINAL GRAPHICS", size.cs_col, size.cs_row);
 	ui::TitleBar tbar("I'm a title bar", frame.get_max_width(), ui::POSITION::TOP);

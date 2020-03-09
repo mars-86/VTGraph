@@ -50,4 +50,9 @@ bool Table::is_table(void) const
 	return true;
 }
 
+const std::vector<std::vector<std::string>>& Table::get_table(void) const
+{
+	return _table;
+}
+
 } // namespace ui

@@ -21,13 +21,13 @@ int main(int argc, char* argv[]) {
     // std::cout << "\x1B[?25h";
 	// vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
 	vt.set_title("VTERM");
-    std::vector<std::string> head = { "X","Y", "Z" };
+    std::vector<std::string> head = { "X", "Y", "Z" };
     std::vector<std::vector<std::string>> data = { {"1","2"}, {"5", "10"} };
 
-	ui::Frame frame(size.cs_col, size.cs_row);
+	ui::Frame frame("VIRTUAL TERMINAL GRAPHICS", size.cs_col, size.cs_row);
 	ui::TitleBar tbar("I'm a title bar", frame.get_max_width(), ui::POSITION::TOP);
-    ui::Table table(frame.get_max_height() - 6, head, data);
-    ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 30, frame.get_max_height() - 6, ui::POSITION::TOP);
+    ui::Table table(frame.get_max_height() - 5, head, data);
+    ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 30, frame.get_max_height() - 5, ui::POSITION::TOP);
     //ui::EuclideanSpace eusp3d(ui::EUCLIDEAN_CONTEXT::_3D, 10, frame.get_max_height() - 6, ui::POSITION::TOP);
 	frame.add("titlebar", tbar);
 	frame.add("table", table);

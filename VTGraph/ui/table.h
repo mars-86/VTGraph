@@ -18,6 +18,7 @@ public:
 	~Table();
 	void add_row(const std::vector<std::string>& row);
 	bool is_table(void) const;
+	const std::vector<std::vector<std::string>>& get_table(void) const;
 private:
 	short _rows, _cols;
 	std::vector<std::vector<std::string>> _table;

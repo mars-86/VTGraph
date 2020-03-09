@@ -6,6 +6,8 @@ Graphic::Graphic(short dwable_w, short dwable_h)
 	: _dwable_w(dwable_w), _dwable_h(dwable_h)
 {
 	_init();
+	std::cout << "\x1B[107m";
+	std::cout << "\x1B[30m";
 }
 
 Graphic::~Graphic()
@@ -15,8 +17,12 @@ Graphic::~Graphic()
 
 void Graphic::draw_rect(const Rect& rect, Color color)
 {
-	for (auto& i : rect.get_bounds())
-		std::cout << (_drawable[i.get_y() - 1][i.get_x() - 1] = { (char*)u8"\u2550", i.get_x(), i.get_y() });
+	char *sym;
+	std::vector<Point2D> bounds = rect.get_bounds();
+	for (auto i = bounds.begin() + 1; i != bounds.end(); ++i) {
+		sym = (i->get_y() == (i - 1)->get_y()) ? (char*)u8"\u2550" : (char*)u8"\u2551";
+		std::cout << (_drawable[i->get_y() - 1][i->get_x() - 1] = { sym, i->get_x(), i->get_y() });
+	}
 
 	Point2D ori = rect.get_origin();
 	// TOP LEFT
@@ -61,17 +67,62 @@ void Graphic::fill_rect(const Rect& rect, Color color)
 
 void Graphic::draw_component(const Container& c)
 {
-	std::cout << "\x1B[107m";
-	std::cout << "\x1B[30m";
-	Rect rect(_curr_col, _curr_row, c.get_width(), c.get_height());
-	fill_rect(rect, { 150, 150, 150 });
+	//Rect rect(_curr_col, _curr_row, c.get_width(), c.get_height());
+	//fill_rect(rect, { 150, 150, 150 });
 	//draw_rect(rect, { 150, 150, 150 });
-	for (auto& i : c.get_childs())
-		draw_component(i.second);
-	//_curr_row = (rect.get_width() == _dwable_w) ? _curr_row + rect.get_height() : _curr_row;
-	//_curr_col = (rect.get_width() == _dwable_w) ? 1 : _curr_col + rect.get_width();
+	for (auto& i : c.get_childs()) {
+		if (i.second.get_type() == "EuclideanSpace")
+			draw_component(static_cast<EuclideanSpace&>(i.second));
+		if (i.second.get_type() == "TitleBar")
+			draw_component(static_cast<TitleBar&>(i.second));
+		if (i.second.get_type() == "Table")
+			draw_component(static_cast<Table&>(i.second));
+	}
 }
 
+void Graphic::draw_component(const EuclideanSpace& espc)
+{
+	Rect rect(_curr_col, _curr_row, espc.get_width(), espc.get_height());
+	fill_rect(rect, { 150, 150, 150 });
+	draw_rect(rect, { 150, 150, 150 });
+	_set_row_col(rect);
+}
+
+void Graphic::draw_component(const Table& tab)
+{
+	Rect rect(_curr_col, _curr_row, tab.get_width(), tab.get_height());
+	fill_rect(rect, { 150, 150, 150 });
+	draw_rect(rect, { 150, 150, 150 });
+	// Draw table
+	Point2D ori = rect.get_origin();
+	const std::vector<std::vector<std::string>> t = tab.get_table();
+	int curr_x = ori.get_x() + 1, curr_y = ori.get_y() + 1;
+	for (int i = 0; i < t.size(); ++i) {
+		for (int j = 0; j < t[i].size(); ++j) {
+			_draw_at((char*)t[i][j].c_str(), (curr_x + 4), (curr_y));
+			_draw_at((char*)u8"\u2502", (curr_x + 4), (curr_y));
+			curr_x += 8;
+		}
+		++curr_y;
+		for (int k = 1; k < 30; ++k) {
+			_draw_at((char*)((k % 10 == 0) ? u8"\u253C" : u8"\u2500"), (ori.get_x() + k), (ori.get_y() + curr_y));
+		}
+		++curr_y;
+	}
+
+	// draw_component(tab, rect);
+	_set_row_col(rect);
+}
+
+void Graphic::draw_component(const TitleBar& tbar)
+{
+	Rect rect(_curr_col, _curr_row, tbar.get_width(), tbar.get_height());
+	fill_rect(rect, { 150, 150, 150 });
+	draw_rect(rect, { 150, 150, 150 });
+	_set_row_col(rect);
+}
+
+/*
 void Graphic::draw_component(const UIComponent& uic)
 {
 	std::cout << "\x1B[107m";
@@ -82,13 +133,77 @@ void Graphic::draw_component(const UIComponent& uic)
 	fill_rect(rect, { 150, 150, 150 });
 	draw_rect(rect, { 150, 150, 150 });
 	if (uic_type == "Table") {
-	
+		UIComponent tab = const_cast<UIComponent&>(uic);
+		Table t = (Table&)tab;// dynamic_cast<Table&>(tab);
+		std::cout << t.get_table().size();
+		std::getchar();
+		draw_component(t, rect);
 	}
 	_curr_row = (rect.get_width() == _dwable_w) ? _curr_row + rect.get_height() : _curr_row;
 	_curr_col = (rect.get_width() == _dwable_w) ? 1 : _curr_col + rect.get_width();
+}*/
+
+void Graphic::draw_component(const Table& tab, const Rect& rect) {
+	Point2D ori = rect.get_origin();
+	const std::vector<std::vector<std::string>> data = tab.get_table();
+	int c = 0;
+	//for ()
+	set_cursor_pos((short)(ori.get_x() + 1 + 4), (short)(ori.get_y() + 1));
+	std::cout << "X";
+	set_cursor_pos((short)(ori.get_x() + 1 + 9), (short)(ori.get_y() + 1));
+	std::cout << u8"\u2502";
+	set_cursor_pos((short)(ori.get_x() + 1 + 9 + 5), (short)(ori.get_y() + 1));
+	std::cout << "Y";
+	set_cursor_pos((short)(ori.get_x() + 1 + 19), (short)(ori.get_y() + 1));
+	std::cout << u8"\u2502";
+	set_cursor_pos((short)(ori.get_x() + 1 + 19 + 5), (short)(ori.get_y() + 1));
+	std::cout << "Z";
+	for (int i = 1; i < 30; ++i) {
+		set_cursor_pos((short)(ori.get_x() + i), (short)(ori.get_y() + 2));
+		std::cout << ((i % 10 == 0) ? u8"\u253C" : u8"\u2500");
+	}
+	for (int j = 3; j < 29; ++j) {
+		set_cursor_pos((short)(ori.get_x() + 1 + 4), (short)(ori.get_y() + j));
+		std::cout << c++;
+		set_cursor_pos((short)(ori.get_x() + 1 + 9), (short)(ori.get_y() + j));
+		std::cout << u8"\u2502";
+		set_cursor_pos((short)(ori.get_x() + 1 + 9 + 5), (short)(ori.get_y() + j));
+		std::cout << c++;
+		set_cursor_pos((short)(ori.get_x() + 1 + 19), (short)(ori.get_y() + j));
+		std::cout << u8"\u2502";
+		set_cursor_pos((short)(ori.get_x() + 1 + 19 + 5), (short)(ori.get_y() + j));
+		std::cout << c++;
+		j++;
+		for (int i = 1; i < 30; ++i) {
+			set_cursor_pos((short)(ori.get_x() + i), (short)(ori.get_y() + j));
+			std::cout << ((i % 10 == 0) ? u8"\u253C" : u8"\u2500");
+		}
+	}
+	std::cout << data.size();
+	std::getchar();
+	for (int i = 0; i < data.size(); ++i) {
+		auto row = &data[i];
+		for (auto k = row->begin(); k != row->end(); ++k)
+			_draw_at((char*)"HOLA", 10, 10);
+	}
+		//std::cout << (_drawable[ori.get_y()][ori.get_x()] = { (char*)"Naada", ori.get_x() + 1, ori.get_y() + 1 });
 }
 
+void Graphic::_set_row_col(const Rect& drawed)
+{
+	_curr_row = (drawed.get_width() == _dwable_w) ? _curr_row + drawed.get_height() : _curr_row;
+	_curr_col = (drawed.get_width() == _dwable_w) ? 1 : _curr_col + drawed.get_width();
+}
 
+void Graphic::_draw_at(char *str, short x, short y)
+{
+	std::cout << (_drawable[y - 1][x - 1] = { str, x, y });
+}
+
+void Graphic::_draw_at(char* str, int x, int y)
+{
+	std::cout << (_drawable[y - 1][x - 1] = { str, x, y });
+}
 
 void Graphic::_init(void)
 {

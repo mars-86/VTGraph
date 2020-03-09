@@ -35,7 +35,7 @@ public:
 		std::cout << visibility;
 	}
 
-	virtual inline void set_cursor_position(const char position, short n)
+	virtual inline void set_cursor_pos(const char position, short n)
 	{
 		switch (position){
 		case 'U':
@@ -53,6 +53,16 @@ public:
 		default:
 			;
 		}
+	}
+
+	virtual inline void set_cursor_pos(short x, short y)
+	{
+		std::cout << VTERM_ESCAPE << "[" << y << ";" << x << "H";
+	}
+
+	virtual inline void set_cursor_pos(int x, int y)
+	{
+		std::cout << VTERM_ESCAPE << "[" << y << ";" << x << "H";
 	}
 
 	virtual inline void set_screen_buffer(const char* s_buffer)

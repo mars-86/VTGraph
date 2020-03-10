@@ -32,12 +32,9 @@ void Graphic::draw_rect(const Rect& rect, const Color& color)
 
 void Graphic::fill_rect(const Rect& rect, const Color& color)
 {
-	//std::cout << rect.get_origin().get_y() << rect.get_origin().get_x();
-	//std::cout << " " << rect.get_origin().get_y() + rect.get_height() << rect.get_origin().get_x() + rect.get_width();
 	for (int i = rect.get_origin().get_y() + 1; i < rect.get_origin().get_y() + rect.get_height(); ++i)
 		for (int j = rect.get_origin().get_x() + 1; j < rect.get_origin().get_x() + rect.get_width(); ++j)
 			_draw_at((char*)" ", j, i);
-	//std::getchar();
 }
 
 void Graphic::draw_component(const Container& c)
@@ -72,6 +69,9 @@ void Graphic::draw_component(const EuclideanSpace& espc)
 		curr_col = ori.get_x() + 1;
 		_draw_at((char*)u8"\u253C", curr_col + ((rect.get_width() - 1) / 2), curr_row + ((rect.get_height() - 1) / 2));
 	}
+	Point2D center = { curr_col + ((rect.get_width() - 1) / 2), curr_row + ((rect.get_height() - 1) / 2)};
+	for (auto& i : espc.get_points())
+		_draw_at((char*)".", center.get_x() + i.get_x(), center.get_y() + i.get_y());
 	_set_row_col(rect);
 }
 
@@ -134,14 +134,18 @@ void Graphic::_set_row_col(const Rect& drawed)
 	_curr_col = (drawed.get_width() == _dwable_w) ? 1 : _curr_col + drawed.get_width();
 }
 
-void Graphic::_draw_at(char *str, short x, short y)
+void Graphic::_draw_at(char *s, short x, short y)
 {
-	std::cout << (_drawable[y - 1][x - 1] = { str, x, y });
+	//std::cout << (_drawable[y - 1][x - 1] = { str, x, y });
+	_drawable[y - 1][x - 1] = { s, x, y };
+	put(s, x, y);
 }
 
-void Graphic::_draw_at(char* str, int x, int y)
+void Graphic::_draw_at(char* s, int x, int y)
 {
-	std::cout << (_drawable[y - 1][x - 1] = { str, x, y });
+	//std::cout << (_drawable[y - 1][x - 1] = { str, x, y });
+	_drawable[y - 1][x - 1] = { s, x, y };
+	put(s, x, y);
 }
 
 void Graphic::_top_left_edge(const Point2D& ori, const Rect& rect)

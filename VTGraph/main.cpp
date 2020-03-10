@@ -21,14 +21,16 @@ int main(int argc, char* argv[]) {
     // std::cout << "\x1B[?25h";
 	// vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
 	vt.set_title("VTERM");
-    std::vector<std::string> head = { "X", "Y", "Z" };
-    std::vector<std::vector<std::string>> data = { {"1","2"}, {"5", "10", "8"}, {"3", "4"} };
+    std::vector<std::string> head = { "X", "Y" };
+    std::vector<std::vector<std::string>> data = { {"1","2"}, {"5", "10"}, {"3", "4"} };
 
 	ui::Frame frame("VIRTUAL TERMINAL GRAPHICS", size.cs_col, size.cs_row);
 	ui::TitleBar tbar("I'm a title bar", frame.get_max_width(), ui::POSITION::TOP);
     ui::Table table(frame.get_max_height() - 5, head, data);
-    ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 30, frame.get_max_height() - 5, ui::POSITION::TOP);
+    ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 20, frame.get_max_height() - 5, ui::POSITION::TOP);
     //ui::EuclideanSpace eusp3d(ui::EUCLIDEAN_CONTEXT::_3D, 10, frame.get_max_height() - 6, ui::POSITION::TOP);
+    eusp2d.draw_rect(1, 1, 5, 5, {0, 0, 0});
+    //eusp2d.draw_rect(5, 15, 20, 3, {0, 0, 0});
 	frame.add("titlebar", tbar);
 	frame.add("table", table);
 	frame.add("eusp_2d", eusp2d);
@@ -38,8 +40,8 @@ int main(int argc, char* argv[]) {
 
     int exec = 0;
     if (exec) {
-        ui::Canvas canvas(size.cs_row, size.cs_col, ui::UNSIGNED);
-        canvas.set_cursor_visibility(VTERM_CURSOR_HIDE);
+        //ui::Canvas canvas(size.cs_row, size.cs_col, ui::UNSIGNED);
+        //canvas.set_cursor_visibility(VTERM_CURSOR_HIDE);
         std::string axis("xy");
         //canvas.show_axis(axis);
         std::vector<ui::Point2D> sn;

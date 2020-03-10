@@ -23,8 +23,8 @@ public:
 	Graphic(short dwable_w, short dwable_h);
 	~Graphic();
 
-	void draw_rect(const Rect& rect, Color color);
-	void fill_rect(const Rect& rect, Color color);
+	void draw_rect(const Rect& rect, const Color& color);
+	void fill_rect(const Rect& rect, const Color& color);
 	void draw_component(const Container& uic);
 	//void draw_component(const UIComponent& uic);
 	void draw_component(const EuclideanSpace& espc);

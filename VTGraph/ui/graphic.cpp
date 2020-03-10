@@ -15,7 +15,7 @@ Graphic::~Graphic()
 	_dealloc();
 }
 
-void Graphic::draw_rect(const Rect& rect, Color color)
+void Graphic::draw_rect(const Rect& rect, const Color& color)
 {
 	char *sym;
 	std::vector<Point2D> bounds = rect.get_bounds();
@@ -30,7 +30,7 @@ void Graphic::draw_rect(const Rect& rect, Color color)
 	_bottom_right_edge(ori, rect);
 }
 
-void Graphic::fill_rect(const Rect& rect, Color color)
+void Graphic::fill_rect(const Rect& rect, const Color& color)
 {
 	//std::cout << rect.get_origin().get_y() << rect.get_origin().get_x();
 	//std::cout << " " << rect.get_origin().get_y() + rect.get_height() << rect.get_origin().get_x() + rect.get_width();

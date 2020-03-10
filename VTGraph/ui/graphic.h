@@ -41,6 +41,10 @@ private:
 	void _set_row_col(const Rect& drawed);
 	void _draw_at(char* str, short x, short y);
 	void _draw_at(char* str, int x, int y);
+	void _top_left_edge(const Point2D& ori, const Rect& rect);
+	void _top_right_edge(const Point2D& ori, const Rect& rect);
+	void _bottom_left_edge(const Point2D& ori, const Rect& rect);
+	void _bottom_right_edge(const Point2D& ori, const Rect& rect);
 	void _init(void);
 	void _alloc(void);
 	void _dealloc(void);

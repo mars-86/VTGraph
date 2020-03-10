@@ -4,7 +4,7 @@
 
 #include "canvas.h"
 #include "graphic.h"
-#include "grid.h"
+#include "table.h"
 #include "euclidean_space.h"
 #include "region.h"
 #include "frame.h"

@@ -27,5 +27,10 @@ UIComponent* Container::get_child(std::string child_name) const
 	return &(it->second);
 }
 
+const std::vector<std::pair<std::string, UIComponent&>>& Container::get_childs(void) const
+{
+	return _child;
+}
+
 } // namespace ui
 

@@ -17,6 +17,7 @@ public:
 
 	void add(std::string name, UIComponent& uic);
 	UIComponent* get_child(std::string child_name) const;
+	const std::vector<std::pair<std::string, UIComponent&>>& get_childs(void) const;
 
 	/* EVENTS */
 	// virtual void on_resize(void) = 0;

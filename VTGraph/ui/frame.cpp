@@ -3,7 +3,13 @@
 namespace ui {
 
 Frame::Frame(short width, short height)
-	: Container( {width, height} )
+	: Container( {width, height} ), _app_name("APP")
+{
+	_drawer = new Graphic(width, height);
+}
+
+Frame::Frame(std::string app_name, short width, short height)
+	: Container({ width, height }), _app_name(app_name)
 {
 	_drawer = new Graphic(width, height);
 }
@@ -41,8 +47,11 @@ void Template::add_element(Element& el)
 
 void Frame::visible(void)
 {
-	for (auto& i : _child)
-		_drawer->draw_component(i.second);
+	/*for (auto& i : _child)
+		_drawer->draw_component(i.second);*/
+	_drawer->draw_component(*this);
+	std::string a_name = get_app_name();
+	_drawer->_draw_at((char*)a_name.c_str(), (get_max_width() / 2) - (get_app_name().size() / 2), 1);
 }
 
 const short Frame::get_max_width(void) const
@@ -53,6 +62,16 @@ const short Frame::get_max_width(void) const
 const short Frame::get_max_height(void) const
 {
 	return this->get_height();
+}
+
+void Frame::set_app_name(std::string app_name)
+{
+	_app_name = app_name;
+}
+
+const std::string& Frame::get_app_name(void) const
+{
+	return _app_name;
 }
 
 void Frame::_draw(const UIComponent& uic)

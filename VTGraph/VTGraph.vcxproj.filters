@@ -162,7 +162,7 @@
     <ClInclude Include="vterm\vterm.h">
       <Filter>Archivos de encabezado\vterm</Filter>
     </ClInclude>
-    <ClInclude Include="ui\grid.h">
+    <ClInclude Include="ui\table.h">
       <Filter>Archivos de encabezado\ui</Filter>
     </ClInclude>
   </ItemGroup>
@@ -221,7 +221,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="ui\grid.cpp">
+    <ClCompile Include="ui\table.cpp">
       <Filter>Archivos de origen\ui</Filter>
     </ClCompile>
   </ItemGroup>

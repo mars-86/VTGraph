@@ -30,12 +30,11 @@ public:
 	void draw_component(const EuclideanSpace& espc);
 	void draw_component(const Table& tab);
 	void draw_component(const TitleBar& tbar);
-	void draw_component(const Table& uic, const Rect& rect);
 	const void set_region(const UIComponent& uic, const gfx::Rect& rect);
 	const Region& get_region(const gfx::Rect& rect);
 private:
 	friend class Frame;
-	dwchar_t** _drawable = NULL;
+	dwchar_t** _drawable = nullptr;
 	short _dwable_w, _dwable_h;
 	short _curr_row = 1, _curr_col = 1;
 	void _set_row_col(const Rect& drawed);

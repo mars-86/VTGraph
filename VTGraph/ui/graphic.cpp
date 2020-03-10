@@ -21,7 +21,7 @@ void Graphic::draw_rect(const Rect& rect, Color color)
 	std::vector<Point2D> bounds = rect.get_bounds();
 	for (auto i = bounds.begin() + 1; i != bounds.end(); ++i) {
 		sym = (i->get_y() == (i - 1)->get_y()) ? (char*)u8"\u2550" : (char*)u8"\u2551";
-		std::cout << (_drawable[i->get_y() - 1][i->get_x() - 1] = { sym, i->get_x(), i->get_y() });
+		_draw_at(sym, i->get_x(), i->get_y());
 	}
 	Point2D ori = rect.get_origin();
 	_top_left_edge(ori, rect);
@@ -36,7 +36,7 @@ void Graphic::fill_rect(const Rect& rect, Color color)
 	//std::cout << " " << rect.get_origin().get_y() + rect.get_height() << rect.get_origin().get_x() + rect.get_width();
 	for (int i = rect.get_origin().get_y() + 1; i < rect.get_origin().get_y() + rect.get_height(); ++i)
 		for (int j = rect.get_origin().get_x() + 1; j < rect.get_origin().get_x() + rect.get_width(); ++j)
-			std::cout << (_drawable[i - 1][j - 1] = { (char*)" ", j, i });
+			_draw_at((char*)" ", j, i);
 	//std::getchar();
 }
 
@@ -147,41 +147,41 @@ void Graphic::_draw_at(char* str, int x, int y)
 void Graphic::_top_left_edge(const Point2D& ori, const Rect& rect)
 {
 	if (ori.get_y() == 1 && ori.get_x() == 1)
-		std::cout << (_drawable[ori.get_y() - 1][ori.get_x() - 1] = { (char*)u8"\u2554", ori.get_x(), ori.get_y() });
+		_draw_at((char*)u8"\u2554", ori.get_x(), ori.get_y());
 	else if (ori.get_y() > 1 && ori.get_x() == 1)
-		std::cout << (_drawable[ori.get_y() - 1][ori.get_x() - 1] = { (char*)u8"\u2560", ori.get_x(), ori.get_y() });
+		_draw_at((char*)u8"\u2560", ori.get_x(), ori.get_y());
 	else
-		std::cout << (_drawable[ori.get_y() - 1][ori.get_x() - 1] = { (char*)u8"\u2566", ori.get_x(), ori.get_y() });
+		_draw_at((char*)u8"\u2566", ori.get_x(), ori.get_y());
 }
 
 void Graphic::_top_right_edge(const Point2D& ori, const Rect& rect)
 {
 	if (ori.get_y() == 1 && (ori.get_x() + rect.get_width() - 1 == _dwable_w))
-		std::cout << (_drawable[ori.get_y() - 1][ori.get_x() + rect.get_width() - 1] = { (char*)u8"\u2557", ori.get_x() + rect.get_width() , ori.get_y() });
+		_draw_at((char*)u8"\u2557", ori.get_x() + rect.get_width() , ori.get_y());
 	else if (ori.get_y() > 1 && (ori.get_x() + rect.get_width() - 1 == _dwable_w))
-		std::cout << (_drawable[ori.get_y() - 1][ori.get_x() + rect.get_width() - 1] = { (char*)u8"\u2563", ori.get_x() + rect.get_width() , ori.get_y() });
+		_draw_at((char*)u8"\u2563", ori.get_x() + rect.get_width() , ori.get_y());
 	else
-		std::cout << (_drawable[ori.get_y() - 1][ori.get_x() + rect.get_width() - 1] = { (char*)u8"\u2566", ori.get_x() + rect.get_width() , ori.get_y() });
+		_draw_at((char*)u8"\u2566", ori.get_x() + rect.get_width() , ori.get_y());
 }
 
 void Graphic::_bottom_left_edge(const Point2D& ori, const Rect& rect)
 {
 	if (ori.get_x() == 1)
-		std::cout << (_drawable[ori.get_y() + rect.get_height() - 1][ori.get_x() - 1] = { (char*)u8"\u255A", ori.get_x(), ori.get_y() + rect.get_height() });
+		_draw_at((char*)u8"\u255A", ori.get_x(), ori.get_y() + rect.get_height());
 	else if ((ori.get_y() + rect.get_height() - 1 < _dwable_h) && (ori.get_x() > 1))
-		std::cout << (_drawable[ori.get_y() + rect.get_height() - 1][ori.get_x() - 1] = { (char*)u8"\u2569", ori.get_x(), ori.get_y() + rect.get_height() });
+		_draw_at((char*)u8"\u2569", ori.get_x(), ori.get_y() + rect.get_height());
 	else
-		std::cout << (_drawable[ori.get_y() + rect.get_height() - 1][ori.get_x() - 1] = { (char*)u8"\u2569", ori.get_x(), ori.get_y() + rect.get_height() });
+		_draw_at((char*)u8"\u2569", ori.get_x(), ori.get_y() + rect.get_height());
 }
 
 void Graphic::_bottom_right_edge(const Point2D& ori, const Rect& rect)
 {
 	if (ori.get_x() + rect.get_width() - 1 == _dwable_w)
-		std::cout << (_drawable[ori.get_y() + rect.get_height() - 1][ori.get_x() + rect.get_width() - 1] = { (char*)u8"\u255D", ori.get_x() + rect.get_width(), ori.get_y() + rect.get_height() });
+		_draw_at((char*)u8"\u255D", ori.get_x() + rect.get_width(), ori.get_y() + rect.get_height());
 	else if ((ori.get_y() + rect.get_height() - 1 < _dwable_h) && (ori.get_x() + rect.get_width() - 1 < _dwable_w))
-		std::cout << (_drawable[ori.get_y() + rect.get_height() - 1][ori.get_x() + rect.get_width() - 1] = { (char*)u8"\u2563", ori.get_x() + rect.get_width(), ori.get_y() + rect.get_height() });
+		_draw_at((char*)u8"\u2563", ori.get_x() + rect.get_width(), ori.get_y() + rect.get_height());
 	else
-		std::cout << (_drawable[ori.get_y() + rect.get_height() - 1][ori.get_x() + rect.get_width() - 1] = { (char*)u8"\u2569", ori.get_x() + rect.get_width(), ori.get_y() + rect.get_height() });
+		_draw_at((char*)u8"\u2569", ori.get_x() + rect.get_width(), ori.get_y() + rect.get_height());
 }
 
 void Graphic::_init(void)

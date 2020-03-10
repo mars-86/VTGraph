@@ -10,7 +10,7 @@
 #include "container.h"
 #include "ui_component.h"
 #include "euclidean_space.h"
-#include "titlebar.h"
+#include "menubar.h"
 #include "table.h"
 
 namespace ui {
@@ -28,8 +28,8 @@ public:
 	void draw_component(const Container& uic);
 	//void draw_component(const UIComponent& uic);
 	void draw_component(const EuclideanSpace& espc);
+	void draw_component(const MenuBar& tbar);
 	void draw_component(const Table& tab);
-	void draw_component(const TitleBar& tbar);
 	const void set_region(const UIComponent& uic, const gfx::Rect& rect);
 	const Region& get_region(const gfx::Rect& rect);
 private:

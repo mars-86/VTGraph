@@ -28,6 +28,8 @@ public:
 
 	bool is_euclidean_space(void) const;
 	const std::string& get_context(void) const;
+	
+	void on_click(void) {};
 private:
 	std::string _e_context = "2D";
 	EUCLIDEAN_AXIS _e_axis = EUCLIDEAN_AXIS::SIGNED;

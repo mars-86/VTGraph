@@ -8,6 +8,8 @@
 #include "euclidean_space.h"
 #include "region.h"
 #include "frame.h"
-#include "titlebar.h"
+#include "menubar.h"
+#include "menu.h"
+#include "menu_item.h"
 
 #endif // !UI_H

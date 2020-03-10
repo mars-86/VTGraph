@@ -45,8 +45,8 @@ void Graphic::draw_component(const Container& c)
 	for (auto& i : c.get_childs()) {
 		if (i.second.get_type() == "EuclideanSpace")
 			draw_component(static_cast<EuclideanSpace&>(i.second));
-		if (i.second.get_type() == "TitleBar")
-			draw_component(static_cast<TitleBar&>(i.second));
+		if (i.second.get_type() == "MenuBar")
+			draw_component(static_cast<MenuBar&>(i.second));
 		if (i.second.get_type() == "Table")
 			draw_component(static_cast<Table&>(i.second));
 	}
@@ -75,6 +75,22 @@ void Graphic::draw_component(const EuclideanSpace& espc)
 	_set_row_col(rect);
 }
 
+void Graphic::draw_component(const MenuBar& mbar)
+{
+	Rect rect(_curr_col, _curr_row, mbar.get_width(), mbar.get_height());
+	fill_rect(rect, { 150, 150, 150 });
+	draw_rect(rect, { 150, 150, 150 });
+	// Draw menu
+	Point2D ori = rect.get_origin();
+	int curr_row = ori.get_y() + 1, curr_col = ori.get_x() + 1;
+	for (uint32_t i = 0; i < mbar.get_menu().size(); ++i) {
+		_draw_at((char *)mbar.get_menu()[i].get_name().c_str(), curr_col, curr_row);
+		curr_col += mbar.get_menu()[i].get_name().size() + 1;
+		_draw_at((char *)u8"\u2502 ", curr_col++, curr_row);
+	}	
+	_set_row_col(rect);
+}
+
 void Graphic::draw_component(const Table& tab)
 {
 	Rect rect(_curr_col, _curr_row, tab.get_width(), tab.get_height());
@@ -96,14 +112,6 @@ void Graphic::draw_component(const Table& tab)
 			_draw_at((char*)((k % 10 == 0) ? u8"\u253C" : u8"\u2500"), (curr_col + k - 1), curr_row);
 		++curr_row;
 	}
-	_set_row_col(rect);
-}
-
-void Graphic::draw_component(const TitleBar& tbar)
-{
-	Rect rect(_curr_col, _curr_row, tbar.get_width(), tbar.get_height());
-	fill_rect(rect, { 150, 150, 150 });
-	draw_rect(rect, { 150, 150, 150 });
 	_set_row_col(rect);
 }
 

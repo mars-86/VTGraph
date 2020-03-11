@@ -17,7 +17,8 @@ public:
 	
 	virtual void put(char *s, int x, int y)
 	{
-		std::cout << (dwchar_t){s, x, y};
+		dwchar_t dwc = { s, x, y };
+		std::cout << dwc;
 	}
 
 protected:

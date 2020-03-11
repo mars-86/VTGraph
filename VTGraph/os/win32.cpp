@@ -16,7 +16,7 @@ HANDLE _init_instance(ContainerSize* cs)
     cs->cs_col = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     SetConsoleOutputCP(CP_UTF8);
     DWORD mode;
-    SetConsoleMode(stdh, 0x0007);
+    SetConsoleMode(stdh, 0x0007 | DISABLE_NEWLINE_AUTO_RETURN | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
     GetConsoleMode(stdh, &mode);
  
     CONSOLE_FONT_INFOEX info = { 0 };

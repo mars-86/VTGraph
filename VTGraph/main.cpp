@@ -39,6 +39,7 @@ int main(int argc, char* argv[]) {
     ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 20, frame.get_max_height() - 5, ui::POSITION::TOP);
     //ui::EuclideanSpace eusp3d(ui::EUCLIDEAN_CONTEXT::_3D, 10, frame.get_max_height() - 6, ui::POSITION::TOP);
     eusp2d.draw_rect(1, 1, 5, 5, {0, 0, 0});
+    eusp2d.draw_line(-20, -5, 20, 10, { 0, 0, 0 });
     //eusp2d.draw_rect(5, 15, 20, 3, {0, 0, 0});
 	frame.add("menubar", mbar);
 	frame.add("table", table);

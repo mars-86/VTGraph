@@ -147,9 +147,6 @@
     <ClInclude Include="ui\region.h">
       <Filter>Archivos de encabezado\ui</Filter>
     </ClInclude>
-    <ClInclude Include="ui\titlebar.h">
-      <Filter>Archivos de encabezado\ui</Filter>
-    </ClInclude>
     <ClInclude Include="ui\ui.h">
       <Filter>Archivos de encabezado\ui</Filter>
     </ClInclude>
@@ -163,6 +160,15 @@
       <Filter>Archivos de encabezado\vterm</Filter>
     </ClInclude>
     <ClInclude Include="ui\table.h">
+      <Filter>Archivos de encabezado\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\menu.h">
+      <Filter>Archivos de encabezado\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\menu_item.h">
+      <Filter>Archivos de encabezado\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\menubar.h">
       <Filter>Archivos de encabezado\ui</Filter>
     </ClInclude>
   </ItemGroup>
@@ -212,9 +218,6 @@
     <ClCompile Include="ui\region.cpp">
       <Filter>Archivos de origen\ui</Filter>
     </ClCompile>
-    <ClCompile Include="ui\titlebar.cpp">
-      <Filter>Archivos de origen\ui</Filter>
-    </ClCompile>
     <ClCompile Include="ui\ui_component.cpp">
       <Filter>Archivos de origen\ui</Filter>
     </ClCompile>
@@ -222,6 +225,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="ui\table.cpp">
+      <Filter>Archivos de origen\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\menubar.cpp">
       <Filter>Archivos de origen\ui</Filter>
     </ClCompile>
   </ItemGroup>

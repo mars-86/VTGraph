@@ -16,7 +16,9 @@ int main(int argc, char* argv[]) {
 
     os::ContainerSize size;
     os::_init_instance(&size);
+	os::_init_event_handler();
 
+	std::getchar();
 	vterm::VTerm vt;
     // std::cout << "\x1B[?25h";
 	// vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
@@ -47,7 +49,7 @@ int main(int argc, char* argv[]) {
 	//frame.add("eusp_3d", eusp3d);
 	frame.visible();
 	//std::cout << "W: " << frame.get_max_width() << std::endl << "H: " << frame.get_max_height() << std::endl;
-
+	
     int exec = 0;
     if (exec) {
         //ui::Canvas canvas(size.cs_row, size.cs_col, ui::UNSIGNED);
@@ -127,7 +129,29 @@ int main(int argc, char* argv[]) {
             sn.clear();
         }*/
     }
-    std::getchar();
+	while(1){
+	
+		char buf[1];
+		int res;
+		
+		/* read scan code from stdin */
+		res = read(0, &buf[0], 1);
+		/* keep reading til there's no more*/
+		while (res >= 0) {
+			switch (buf[0]) {
+			case 0x01:
+				/* escape was pressed */
+				printf("%s", "ESC PRESS");
+				break;
+			case 0x81:
+				/* escape was released */
+				break;
+			/* process more scan code possibilities here! */
+			}
+			res = read(0, &buf[0], 1);
+		}
+	}
+    //std::getchar();
 
     return 0;
 }

@@ -6,7 +6,9 @@
 
 namespace os {
 
-void* _init_instance(ContainerSize* cs);
+HWND _init_instance(ContainerSize* cs);
+BOOL _change_window_message_filter_es(HWND handle);
+void _init_event_handler(void);
 
 } // namespace os
 

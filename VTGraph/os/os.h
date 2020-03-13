@@ -8,6 +8,7 @@
 #include "win32.h"
 #endif // __linux__
 
+
 #undef NULL
 #ifdef __cplusplus
 #define NULL nullptr

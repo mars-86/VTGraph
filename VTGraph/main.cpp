@@ -15,7 +15,46 @@
 int main(int argc, char* argv[]) {
 
     os::ContainerSize size;
-    HWND w = os::_init_instance(&size);
+    os::_init_instance(&size);
+    
+	fd_set rfds;
+    struct timeval tv;
+    int retval;
+
+	std::cout << os::_open_default_display();
+	std::cout << os::_init_event_handler();
+	//std::cout << "\eF";
+	//std::cout << "\x1B 1;1’z";
+	//std::cout << os::_get_kb_mode();
+	std::getchar();
+    while(1) {
+
+		/* Watch stdin (fd 0) to see when it has input. */
+
+		FD_ZERO(&rfds);
+		FD_SET(0, &rfds);
+
+		/* Wait up to five seconds. */
+
+		tv.tv_sec = 3;
+		tv.tv_usec = 0;
+		
+		retval = select(1, &rfds, NULL, NULL, &tv);
+		/* Don't rely on the value of tv now! */
+
+		if (retval == -1)
+			perror("select()");
+		else if (retval)
+			printf("Data is available now.\n");
+		/* FD_ISSET(0, &rfds) will be true. */
+		else
+			printf("No data within five seconds.\n");    
+		
+		FD_CLR(0, &rfds);
+		
+    
+	}
+    
 
     //os::_change_window_message_filter_es();
     //os::_init_event_handler();
@@ -130,6 +169,7 @@ int main(int argc, char* argv[]) {
             sn.clear();
         }*/
     }
+    
 	//while(1){
 	
 		//char buf[1];
@@ -152,6 +192,7 @@ int main(int argc, char* argv[]) {
 			//res = read(0, &buf[0], 1);
 		//}
 	//}
+
     std::getchar();
 
     return 0;

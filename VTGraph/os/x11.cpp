@@ -8,13 +8,12 @@
 #include <fcntl.h>
 #include <sys/ioctl.h> //ioctl() and TIOCGWINSZ
 #include <unistd.h> // for STDOUT_FILENO
-#include <poll.h>
 
 #include <stdlib.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#include <unistd.h>
 
+static Display* display;
 
 namespace os {
 
@@ -37,11 +36,50 @@ struct winsize get_window_size(void)
 	return size;
 }
 
-static struct termios tty_attr_old;
-static int old_keyboard_mode;
-
 int _init_event_handler(void)
 {
+	if (!(display = XOpenDisplay(NULL))){
+		fprintf(stderr, "Cannot open display\n");
+		return -1;
+	}
+
+	//Window rootw = XDefaultRootWindow(display);
+	
+	Window *child_w = NULL;
+	unsigned int count_w;
+	//Status q_stat = XQueryTree(display, rootw, NULL, NULL, NULL, &count_w);
+	int screen;
+	Window rootw;
+	screen = DefaultScreen (display);
+	rootw = RootWindow (display, screen);
+	
+	//if (q_stat == 0 )
+	//	return 1;
+
+	//XFree(child_w);
+	
+	XEvent evt;
+	int err = XGrabPointer(
+				display,
+				rootw,
+				False,
+				PointerMotionMask | ButtonPressMask,
+				GrabModeAsync,
+				GrabModeAsync,
+				None,
+				None,
+				CurrentTime
+			);
+	switch(err) {
+		// ...
+	}
+	while(1) {
+		
+	XNextEvent(display, &evt);
+    // ...
+	printf("Absolute coordinates: %d,%d\n", evt.xbutton.x_root, evt.xbutton.y_root);
+	
+	}
     /*struct termios tty_attr;
     int flags;*/
 
@@ -68,34 +106,43 @@ int _init_event_handler(void)
 		perror("ioctl");
 		return -1;
 	}
+	*/
+	XCloseDisplay(display);
+	return 0;
+}
 
-	return 0;*/
-           fd_set rfds;
-           struct timeval tv;
-           int retval;
+int _get_kb_mode(void)
+{
+	int kb_mode;
+	int fd = open("/dev/input/mouse0", O_RDONLY);
+	if (fd < 0 ) {
+		perror("ioctl");
+		return -1;
+    }
+	if (ioctl(STDOUT_FILENO, KDGKBMODE, &kb_mode) < 0) {
+		perror("ioctl");
+		return -1;
+    }
+    return kb_mode;
+}
 
-	while (1){
-		/* Watch stdin (fd 0) to see when it has input. */
-
-        FD_ZERO(&rfds);
-        FD_SET(0, &rfds);
-
-        /* Wait up to five seconds. */
-
-        tv.tv_sec = 1;
-        tv.tv_usec = 0;
-        
-		retval = select(1, &rfds, NULL, NULL, &tv);
-        /* Don't rely on the value of tv now! */
-
-		if (retval == -1)
-			perror("select()");
-        else if (retval)
-			printf("Data is available now.\n");
-        /* FD_ISSET(0, &rfds) will be true. */
-        else
-			printf("No data within five seconds.\n");
+int _open_default_display(void)
+{
+	if (!(display = XOpenDisplay(NULL))){
+		fprintf(stderr, "Cannot open display\n");
+		return -1;
 	}
+	return 0;
+}
+
+Display* _get_display_name(void)
+{
+	return display;
+}
+
+void _close_display(void)
+{
+	XCloseDisplay(display);
 }
 
 } // namespace os

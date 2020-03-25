@@ -16,5 +16,4 @@
 #define NULL ((void*)0)
 #endif // __cplusplus
 
-
 #endif // OS_OS_H

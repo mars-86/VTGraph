@@ -52,9 +52,11 @@
     <ClInclude Include="ui\frame.h" />
     <ClInclude Include="ui\geometric.h" />
     <ClInclude Include="ui\graphic.h" />
+    <ClInclude Include="ui\menu.h" />
+    <ClInclude Include="ui\menubar.h" />
+    <ClInclude Include="ui\menu_item.h" />
     <ClInclude Include="ui\table.h" />
     <ClInclude Include="ui\region.h" />
-    <ClInclude Include="ui\titlebar.h" />
     <ClInclude Include="ui\ui.h" />
     <ClInclude Include="ui\ui_component.h" />
     <ClInclude Include="vterm\sequences.h" />
@@ -76,9 +78,9 @@
     <ClCompile Include="ui\frame.cpp" />
     <ClCompile Include="ui\geometric.cpp" />
     <ClCompile Include="ui\graphic.cpp" />
+    <ClCompile Include="ui\menubar.cpp" />
     <ClCompile Include="ui\table.cpp" />
     <ClCompile Include="ui\region.cpp" />
-    <ClCompile Include="ui\titlebar.cpp" />
     <ClCompile Include="ui\ui_component.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

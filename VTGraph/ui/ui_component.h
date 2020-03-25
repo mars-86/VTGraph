@@ -21,7 +21,7 @@ public:
 
 	std::string get_type(void) const;
 	/* EVENTS */
-	//virtual void on_click(void) = 0;
+	virtual void on_click(void) = 0;
 	//virtual void on_hover(void) = 0;
 protected:
 	std::string _type;

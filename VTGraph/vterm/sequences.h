@@ -2,6 +2,8 @@
 #define VTERM_SEQUENCES_H
 #pragma once
 
+#include <string>
+
 #define VTERM_ESCAPE "\x1B"
 #define VTERM_BELL "\x07"
 #define VTERM_CURSOR_SHOW VTERM_ESCAPE "[?25h"

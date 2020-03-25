@@ -2,18 +2,23 @@
 #define VTERM_VTERM_H
 #pragma once
 
-#include <string>
-#include "sequences.h"
+#include "command.h"
 
 namespace vterm {
 
-class VTerm {
+class VTerm : public Command {
 public:
 	VTerm() { set_screen_buffer(VTERM_ALTERNATE_SCREEN_BUFFER); }
 	virtual ~VTerm()
 	{ 
 		set_cursor_visibility(VTERM_CURSOR_SHOW);
 		set_screen_buffer(VTERM_MAIN_SCREEN_BUFFER);
+	}
+	
+	virtual void put(char *s, int x, int y)
+	{
+		dwchar_t dwc = { s, x, y };
+		std::cout << dwc;
 	}
 
 protected:
@@ -23,66 +28,11 @@ protected:
 		int y;
 	} dwchar_t;
 
-public:
+private:
 	friend std::ostream& operator<<(std::ostream& out, const dwchar_t& symbol)
 	{
 		// std::flush for cursor fluency
 		return out << VTERM_ESCAPE << "[" << symbol.y << ";" << symbol.x << "H" << symbol.val << std::flush;
-	}
-
-	virtual inline void set_cursor_visibility(const char *visibility)
-	{
-		std::cout << visibility;
-	}
-
-	virtual inline void set_cursor_pos(const char position, short n)
-	{
-		switch (position){
-		case 'U':
-			std::cout << VTERM_CURSOR_POSITION_UP(n);
-			break;
-		case 'D':
-			std::cout << VTERM_CURSOR_POSITION_DOWN(n);
-			break;
-		case 'F':
-			std::cout << VTERM_CURSOR_POSITION_FWARD(n);
-			break;
-		case 'B':
-			std::cout << VTERM_CURSOR_POSITION_BWARD(n);
-			break;
-		default:
-			;
-		}
-	}
-
-	virtual inline void set_cursor_pos(short x, short y)
-	{
-		std::cout << VTERM_ESCAPE << "[" << y << ";" << x << "H";
-	}
-
-	virtual inline void set_cursor_pos(int x, int y)
-	{
-		std::cout << VTERM_ESCAPE << "[" << y << ";" << x << "H";
-	}
-
-	virtual inline void set_screen_buffer(const char* s_buffer)
-	{
-		std::cout << s_buffer;
-	}
-
-	virtual inline void set_charset(const char* charset)
-	{
-		std::cout << charset;
-	}
-
-	virtual inline void set_icon_title(const char* title)
-	{
-		std::cout << VTERM_ESCAPE << "]0;" << title << VTERM_BELL;
-	}
-
-	virtual inline void set_title(const char* title)
-	{
-		std::cout << VTERM_ESCAPE << "]2;" << title << VTERM_BELL;
 	}
 
 };

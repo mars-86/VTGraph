@@ -19,6 +19,8 @@ public:
 	bool is_table(void) const;
 	short get_col_width(void) const;
 	const std::vector<std::vector<std::string>>& get_table(void) const;
+	
+	void on_click(void) {};
 private:
 	short _rows, _cols, _row_height = 1, _col_width = 10;
 	std::vector<std::vector<std::string>> _table;

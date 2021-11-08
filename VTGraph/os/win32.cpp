@@ -17,7 +17,7 @@ HWND _init_instance(ContainerSize* cs)
     cs->cs_col = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     SetConsoleOutputCP(CP_UTF8);
     DWORD mode;
-    SetConsoleMode(stdh, 0x0007 | DISABLE_NEWLINE_AUTO_RETURN | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+    SetConsoleMode(stdh, 0x0007); // | DISABLE_NEWLINE_AUTO_RETURN | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
     GetConsoleMode(stdh, &mode);
     CONSOLE_FONT_INFOEX info = { 0 };
     info.cbSize = sizeof(info);
@@ -37,7 +37,7 @@ HWND _init_instance(ContainerSize* cs)
 
 BOOL _change_window_message_filter_es(HWND handle)
 {
-    return ChangeWindowMessageFilterEx(handle, 255, MSGFLT_ALLOW, NULL);
+    // return ChangeWindowMessageFilterEx(handle, 255, 1/* MSGFLT_ALLOW */, NULL);
 }
 
 /*  This function is called by the Windows function DispatchMessage()  */

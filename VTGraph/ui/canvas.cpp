@@ -117,7 +117,7 @@ namespace ui {
 	{
 		rotate(shape.get_bounds(), angle);//, shape.get_color());
 	}
-	
+
 	void Canvas::rotate(const std::vector<Point2D>& points, short angle)
 	{
 		std::vector<Point2D> points_p;
@@ -142,7 +142,7 @@ namespace ui {
 	{
 		rotate(shape.get_bounds(), angle);//, shape.get_color());
 	}
-	
+
 	void Canvas::rotate(std::vector<Point2D>& points, short angle)
 	{
 		std::vector<Point2D> points_p;
@@ -277,7 +277,7 @@ namespace ui {
 				else
 					std::cout << (_canvas[i][j] = { (char*)"|", i, j });
 	}
-	
+
 	void Canvas::_set_center(const Point2D& center)
 	{
 		_center.set_x(center.get_x());
@@ -288,7 +288,7 @@ namespace ui {
 	{
 		return _ratio;
 	}
-	
+
 	const char* Canvas::_gen_symbol(const std::vector<Point2D>& points, int curr_pos)
 	{
 		int curr_x = points[curr_pos].get_x();

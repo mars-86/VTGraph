@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     // std::cout << "\x1B[?25h";
 	// vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
 	vt.set_title("VTERM");
-    std::vector<std::string> head = { "X", "Y" };
+    /* std::vector<std::string> head = { "X", "Y" };
     std::vector<std::vector<std::string>> data = { {"1", "2"}, {"5", "10"}, {"3", "4"} };
 
 	ui::Frame frame("VIRTUAL TERMINAL GRAPHICS", size.cs_col, size.cs_row);
@@ -38,21 +38,21 @@ int main(int argc, char* argv[]) {
 	mbar.add_menu(edit);
 	mbar.add_menu(help);
     ui::Table table(frame.get_max_height() - 5, head, data);
-    ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 20, frame.get_max_height() - 5, ui::POSITION::TOP);
+    ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 20, frame.get_max_height() - 5, ui::POSITION::TOP); */
     //ui::EuclideanSpace eusp3d(ui::EUCLIDEAN_CONTEXT::_3D, 10, frame.get_max_height() - 6, ui::POSITION::TOP);
-    eusp2d.draw_rect(1, 1, 5, 5, {0, 0, 0});
-    eusp2d.draw_line(-20, -5, 20, 10, { 0, 0, 0 });
+    // eusp2d.draw_rect(1, 1, 5, 5, {0, 0, 0});
+    // eusp2d.draw_line(-20, -5, 20, 10, { 0, 0, 0 });
     //eusp2d.draw_rect(5, 15, 20, 3, {0, 0, 0});
-	frame.add("menubar", mbar);
-	frame.add("table", table);
-	frame.add("eusp_2d", eusp2d);
+	// frame.add("menubar", mbar);
+	// frame.add("table", table);
+	// frame.add("eusp_2d", eusp2d);
 	//frame.add("eusp_3d", eusp3d);
-	frame.visible();
+	// frame.visible();
 	//std::cout << "W: " << frame.get_max_width() << std::endl << "H: " << frame.get_max_height() << std::endl;
     //std::cout << " " << g_win_tid << " " << pid;
-    int exec = 0;
+    int exec = 1;
     if (exec) {
-        //ui::Canvas canvas(size.cs_row, size.cs_col, ui::UNSIGNED);
+        ui::Canvas canvas(size.cs_row, size.cs_col); //, ui::UNSIGNED);
         //canvas.set_cursor_visibility(VTERM_CURSOR_HIDE);
         std::string axis("xy");
         //canvas.show_axis(axis);
@@ -70,9 +70,20 @@ int main(int argc, char* argv[]) {
         gfx::Ellipse elipse2(25, 40, 3, 10, { 230, 40, 86 });
         gfx::Parable parable(33, 20, 0, 0, { 230, 40, 86 });
         //void (CCanvas:: * dw)(gfx::Shape2D&) = &CCanvas::draw;
-        std::srand((time_t)std::time((time_t*)nullptr));
+        // std::srand((time_t)std::time((time_t*)nullptr));
 
-        /*for (;;) {
+        // canvas.draw(rect);
+
+        for (double i = 0; i < PI * 4; i += .1) {
+                sn.push_back({ (int)(n), (int)(30 + 10 * (sin(i))) });
+                //canvas.draw(line2);
+                //x1 = (int)n;
+                //y1 = (int)(80 + 50 * sin(i));
+                n += 0.314;
+            }
+        canvas.draw(sn);
+        /*
+        for (;;) {
             //int x1 = n, y1 = 80;
             gfx::Color color;
             for (double i = 0; i < PI * 4; i += .1) {
@@ -90,7 +101,7 @@ int main(int argc, char* argv[]) {
             unsigned char g = 1 + std::rand() / ((RAND_MAX + 1u) / 255);
             unsigned char b = 1 + std::rand() / ((RAND_MAX + 1u) / 255);
             color = { r, g, b };
-            //canvas.draw(sn);
+            canvas.draw(sn);
             //canvas->draw(rect, sq, line);
             //canvas.draw(circle);
             //canvas.draw(elipse1);
@@ -130,10 +141,10 @@ int main(int argc, char* argv[]) {
         }*/
     }
 	//while(1){
-	
+
 		//char buf[1];
 		//int res;
-		
+
 		/* read scan code from stdin */
 		//res = read(0, &buf[0], 1);
 		/* keep reading til there's no more*/

@@ -31,7 +31,7 @@
 
 1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\rgb.h
 
-1636155347 source:g:\programacion\cpp\github\vtgraph\vtgraph\os\win32.cpp
+1636396197 source:g:\programacion\cpp\github\vtgraph\vtgraph\os\win32.cpp
 	"win32.h"
 	<stdio.h>
 	<stdio.h>
@@ -78,7 +78,7 @@
 	<sys/time.h>
 	<sys/types.h>
 
-1583384900 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\canvas.cpp
+1636399273 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\canvas.cpp
 	<iostream>
 	<cmath>
 	<thread>
@@ -288,7 +288,7 @@
 1585098983 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\ui_component.cpp
 	"ui_component.h"
 
-1636156945 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
+1636399190 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
 	<iostream>
 	<vector>
 	<cassert>

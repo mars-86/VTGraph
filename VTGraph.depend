@@ -288,3 +288,30 @@
 1585098983 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\ui_component.cpp
 	"ui_component.h"
 
+1636156945 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
+	<iostream>
+	<vector>
+	<cassert>
+	<cmath>
+	"ui/ui.h"
+	"gfx/gfx.h"
+	"os/os.h"
+	"vterm/vterm.h"
+	<thread>
+	<ctime>
+
+1585098983 g:\programacion\cpp\github\vtgraph\vtgraph\ui\ui.h
+	"canvas.h"
+	"graphic.h"
+	"table.h"
+	"euclidean_space.h"
+	"region.h"
+	"frame.h"
+	"menubar.h"
+	"menu.h"
+	"menu_item.h"
+
+1636156945 g:\programacion\cpp\github\vtgraph\vtgraph\os\os.h
+	"x11.h"
+	"win32.h"
+

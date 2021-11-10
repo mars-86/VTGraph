@@ -13,14 +13,14 @@ namespace ui {
 
 	Canvas::Canvas() {}
 
-	Canvas::Canvas(short rows, short cols)
-		:_rows(rows), _cols(cols), _ratio(floor(_cols / _rows))
+	Canvas::Canvas(short width, short height)
+		:_width(width), _height(height), _ratio(floor(_height / _width))
 	{
 		_init();
 	}
 
-	Canvas::Canvas(short rows, short cols, AXIS_TYPE type)
-		: _rows(rows), _cols(cols), _ratio(floor(_cols / _rows)), _axis_type(type)
+	Canvas::Canvas(short width, short height, AXIS_TYPE type)
+		: _width(width), _height(height), _ratio(floor(_height / _width)), _axis_type(type)
 	{
 		_init();
 	}
@@ -40,18 +40,18 @@ namespace ui {
 		return _center;
 	}
 
-	void Canvas::draw(gfx::Shape2D& shape)
+	void Canvas::draw(gfx::Shape2D& shape, short layer)
 	{
-		draw(shape.get_bounds());//, shape.get_color());
+		draw(shape.get_bounds(), 0);//, shape.get_color());
 	}
 
-	void Canvas::draw(const std::vector<Point2D>& points)
+	void Canvas::draw(const std::vector<Point2D>& points, short layer)
 	{
 		for (int i = 0; i < (int)points.size(); ++i)
 			put_char(_gen_symbol(points, i), points[i].get_x(), points[i].get_y());
 		print();
 		// move cursor to the end
-		dwchar_t end = { (char*)"", _rows - 1, _cols - 1 };
+		dwchar_t end = { (char*)"", _width - 1, _height - 1 };
 		std::cout << end;
 	}
 
@@ -64,7 +64,7 @@ namespace ui {
 		}
 		print();
 		// move cursor to the end
-		dwchar_t end = { (char*)"", _rows - 1, _cols - 1 };
+		dwchar_t end = { (char*)"", _width - 1, _height - 1 };
 		std::cout << end;
 	}
 
@@ -110,7 +110,7 @@ namespace ui {
 			i.set_y(i.get_y() + y);
 		}
 		flush();
-		draw(points_p);
+		draw(points_p, 0);
 	}
 
 	void Canvas::rotate(const gfx::Shape2D& shape, short angle)
@@ -134,7 +134,7 @@ namespace ui {
 
 		}
 		flush();
-		draw(points_p);
+		draw(points_p, 0);
 		_set_center(c);
 	}
 
@@ -165,7 +165,7 @@ namespace ui {
 		//points.clear();
 		//points.insert(points.begin(), points_p.begin(), points_p.end());
 		flush();
-		draw(points_p);
+		draw(points_p, 0);
 		//translate(points, -points[0].x, -points[0].y);
 		_set_center(c);
 	}
@@ -179,10 +179,10 @@ namespace ui {
 		_canvas[coords.get_x()][coords.get_y()] = { (char*)s, coords.get_x(), coords.get_y() };
 	}
 
-	void Canvas::set_size(short rows, short cols)
+	void Canvas::set_size(short width, short height)
 	{
-		_rows = rows;
-		_cols = cols;
+		_width = width;
+		_height = height;
 	}
 
 	void Canvas::show_axis(const std::string& axis)
@@ -223,30 +223,32 @@ namespace ui {
 		_alloc();
 		switch (_axis_type) {
 		case AXIS_TYPE::UNSIGNED:
-			_set_center({ _rows - 1, 0 });
+			_set_center({ _width - 1, 0 });
 			break;
 		case AXIS_TYPE::UNSIGNED_X:
-			_set_center({ (_rows / 2) - 1, 0 });
+			_set_center({ (_width / 2) - 1, 0 });
 			break;
 		case AXIS_TYPE::UNSIGNED_Y:
-			_set_center({ _rows - 1, (_cols / 2) - 1 });
+			_set_center({ _width - 1, (_height / 2) - 1 });
 			break;
 		default: // SIGNED
-			_set_center({(_rows / 2) - 1, (_cols / 2) - 1 });
+			_set_center({(_width / 2) - 1, (_height / 2) - 1 });
 		}
 		std::cout << get_center();
 	}
 
 	void Canvas::_alloc(void)
 	{
-		_canvas = new VTerm::dwchar_t* [_rows];
-		for (int i = 0; i < _rows; ++i)
-			_canvas[i] = new VTerm::dwchar_t[_cols];
+		_canvas = new VTerm::dwchar_t* [_width];
+		for (int i = 0; i < _width; ++i)
+			_canvas[i] = new VTerm::dwchar_t[_height];
+        // _layers.push_back(Layer2D(_height, _width, _layers.size()));
+        // std::cout << _layers[0].get_linear_size();
 	}
 
 	void Canvas::_dealloc(void)
 	{
-		for (int i = 0; i < _rows; ++i)
+		for (int i = 0; i < _width; ++i)
 			delete[] _canvas[i];
 		delete[] _canvas;
 	}
@@ -254,8 +256,8 @@ namespace ui {
 	void Canvas::_show_x_axis(Point2D& center)
 	{
 		char buff[10];
-		for (int i = center.get_x(); i <= center.get_x(); ++i)
-			for (int j = 0; j < _cols; ++j)
+		for (int i = center.get_y(); i <= center.get_y(); ++i)
+			for (int j = 0; j < _height; ++j)
 				if (j % 25 == 0) {
 					base::itoa(j, buff, 10);
 					std::cout << (_canvas[i][j] = { (char*)"|", i, j });
@@ -263,12 +265,13 @@ namespace ui {
 				}
 				else
 					std::cout << (_canvas[i][j] = { (char*)"_", i, j });
+
 	}
 
 	void Canvas::_show_y_axis(Point2D& center)
 	{
 		char buff[10];
-		for (int i = 0; i < _rows; ++i)
+		for (int i = 0; i < _width; ++i)
 			for (int j = center.get_y(); j <= center.get_y(); ++j)
 				if (i % (short)floor(28 / _ratio) == 0) {
 					base::itoa(j, buff, 10);

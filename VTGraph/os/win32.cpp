@@ -17,7 +17,9 @@ HWND _init_instance(ContainerSize* cs)
     cs->cs_col = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     SetConsoleOutputCP(CP_UTF8);
     DWORD mode;
-    SetConsoleMode(stdh, 0x0007); // | DISABLE_NEWLINE_AUTO_RETURN | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+    // 0x0008 DISABLE_NEWLINE_AUTO_RETURN
+    // 0x0004 ENABLE_VIRTUAL_TERMINAL_PROCESSING
+    SetConsoleMode(stdh, 0x0004 | 0x0007 | 0x0008);
     GetConsoleMode(stdh, &mode);
     CONSOLE_FONT_INFOEX info = { 0 };
     info.cbSize = sizeof(info);

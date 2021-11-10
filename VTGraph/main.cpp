@@ -16,18 +16,26 @@ LRESULT CALLBACK term_proc(HANDLE, UINT, WPARAM, LPARAM);
 
 int main(int argc, char* argv[]) {
 
+    Sleep(3000);
     os::ContainerSize size;
     os::_init_instance(&size);
 
     vterm::VTerm vt;
-    // std::cout << "\x1B[?25h";
+    std::cout << "\x1B[?25h";
 	// vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
 	vt.set_title("VTERM");
-    /* std::vector<std::string> head = { "X", "Y" };
+    std::vector<std::string> head = { "X", "Y" };
     std::vector<std::vector<std::string>> data = { {"1", "2"}, {"5", "10"}, {"3", "4"} };
 
+    std::string bra = u8"\u280A";
+    std::cout << bra;
+    std::getchar();
 	ui::Frame frame("VIRTUAL TERMINAL GRAPHICS", size.cs_col, size.cs_row);
-	ui::MenuItem file_new("New");
+	ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 1, frame.get_max_height() - 2, ui::POSITION::TOP);
+	eusp2d.draw_rect(5, 10, 20, 3, {150, 100, 200});
+    frame.add("eusp_2d", eusp2d);
+    frame.visible();
+	/*ui::MenuItem file_new("New");
 	ui::MenuItem file_open("Open");
 	ui::MenuItem file_save("Save");
 	ui::Menu file("File", {file_new, file_open, file_save});
@@ -50,12 +58,14 @@ int main(int argc, char* argv[]) {
 	// frame.visible();
 	//std::cout << "W: " << frame.get_max_width() << std::endl << "H: " << frame.get_max_height() << std::endl;
     //std::cout << " " << g_win_tid << " " << pid;
+    std::getchar();
     int exec = 1;
     if (exec) {
-        ui::Canvas canvas(size.cs_row, size.cs_col); //, ui::UNSIGNED);
-        //canvas.set_cursor_visibility(VTERM_CURSOR_HIDE);
-        std::string axis("xy");
-        //canvas.show_axis(axis);
+        ui::Canvas canvas(size.cs_col, size.cs_row);//, ui::UNSIGNED);
+        std::cout << size.cs_row << " " << size.cs_col;
+        canvas.set_cursor_visibility(VTERM_CURSOR_HIDE);
+        canvas.show_axis("x");
+        std::getchar();
         std::vector<ui::Point2D> sn;
         std::vector<ui::Point2D> parab;
         double n = 1;
@@ -72,16 +82,17 @@ int main(int argc, char* argv[]) {
         //void (CCanvas:: * dw)(gfx::Shape2D&) = &CCanvas::draw;
         // std::srand((time_t)std::time((time_t*)nullptr));
 
-        // canvas.draw(rect);
+        // canvas.draw(rect, 0);
 
         for (double i = 0; i < PI * 4; i += .1) {
                 sn.push_back({ (int)(n), (int)(30 + 10 * (sin(i))) });
-                //canvas.draw(line2);
+                // canvas.draw(line2);
                 //x1 = (int)n;
                 //y1 = (int)(80 + 50 * sin(i));
                 n += 0.314;
             }
-        canvas.draw(sn);
+        canvas.draw(sn, 0);
+        std::getchar();
         /*
         for (;;) {
             //int x1 = n, y1 = 80;

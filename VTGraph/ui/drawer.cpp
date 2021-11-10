@@ -11,15 +11,9 @@
 
 namespace ui {
 
-Drawer::Drawer() {}
+// Drawer::Drawer() {}
 
-Drawer::~Drawer() {}
-
-template <typename T>
-void Drawer::draw(T obj)
-{
-
-}
+// Drawer::~Drawer() {}
 
 /*
 	Drawer::Drawer(short rows, short cols)
@@ -149,7 +143,7 @@ void Drawer::draw(T obj)
 			delete[] _canvas[i];
 		delete[] _canvas;
 	}
-	
+
 	const char* Drawer::_gen_symbol(const std::vector<Point2D>& points, int curr_pos)
 	{
 		int curr_x = points[curr_pos].x;

@@ -26,7 +26,7 @@ public:
 	void draw_rect(const Rect& rect, const Color& color);
 	void fill_rect(const Rect& rect, const Color& color);
 	void draw_component(const Container& uic);
-	//void draw_component(const UIComponent& uic);
+	void draw_component(const UIComponent& uic);
 	void draw_component(const EuclideanSpace& espc);
 	void draw_component(const MenuBar& tbar);
 	void draw_component(const Table& tab);

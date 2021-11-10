@@ -4,15 +4,18 @@
 
 #include <string>
 #include <vector>
-#include "../gfx/point2d.h"
 
 namespace ui {
 
 template <typename T>
 class LayerT {
 public:
-	LayerT(short width, short height)
-        : _width(width), _height(height) {}
+	LayerT(short width, short height, short layer_deep)
+        : _width(width), _height(height), _layer_deep(layer_deep)
+    {
+        _layer.resize((width * height - 1), " ");
+    }
+
 	~LayerT() {}
 
     short get_width(void) const
@@ -45,14 +48,17 @@ public:
         _layer_deep = layer_deep;
     }
 
+    int get_linear_size(void) const
+    {
+        return get_width() * get_height();
+    }
+
 private:
     short _width;
     short _height;
     short _layer_deep;
     std::vector<T> _layer;
 };
-
-typedef LayerT<gfx::Point2D> Layer2D;
 
 }
 

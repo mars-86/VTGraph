@@ -4,6 +4,7 @@
 
 #include <string>
 #include "component.h"
+// #include "graphic.h"
 
 namespace ui {
 
@@ -26,6 +27,8 @@ public:
 protected:
 	std::string _type;
 	void _set_type(std::string type);
+	// Graphic _drawer;
+	std::vector<std::string> _drawable;
 };
 
 } // namespace ui

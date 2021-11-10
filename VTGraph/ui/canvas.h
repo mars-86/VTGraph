@@ -6,6 +6,7 @@
 #include <string>
 #include "../vterm/vterm.h"
 #include "../gfx/gfx.h"
+#include "layer.h"
 
 #ifdef _DEVELOPMENT
 #include "../base/debug_tools.h"
@@ -31,9 +32,9 @@ public:
 	~Canvas();
 
 	Point2D get_center(void) const;
-	void draw(gfx::Shape2D& sh);
+	void draw(gfx::Shape2D& sh, short layer);
 	void draw(const std::vector<Point2D>& points, Color color);
-	void draw(const std::vector<Point2D>& points);
+	void draw(const std::vector<Point2D>& points, short layer);
 	void draw(gfx::Shape2D& s1, gfx::Shape2D& s2, gfx::Shape2D& s3);
 	void translate(const gfx::Shape2D& shape, int x, int y);
 	void translate(const std::vector<Point2D>& points, int x, int y);
@@ -50,13 +51,14 @@ public:
 	void flush(void);
 
 private:
-	short _rows;
-	short _cols;
+	short _width;
+	short _height;
 	short _ratio;
 	Point2D _center;
 	//char16_t **_canvas = nullptr;
 	dwchar_t** _canvas = nullptr;
 	std::vector<Point2D> _write_buff;
+	// std::vector<Layer2D> _layers;
 	int _write_buff_offset = 0;
 	AXIS_TYPE _axis_type;// = SIGNED;
 

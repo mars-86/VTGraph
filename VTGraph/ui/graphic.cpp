@@ -2,7 +2,7 @@
 
 namespace ui {
 
-Graphic::Graphic(short dwable_w, short dwable_h) 
+Graphic::Graphic(short dwable_w, short dwable_h)
 	: _dwable_w(dwable_w), _dwable_h(dwable_h)
 {
 	_init();
@@ -43,20 +43,20 @@ void Graphic::draw_component(const Container& c)
 	//fill_rect(rect, { 150, 150, 150 });
 	//draw_rect(rect, { 150, 150, 150 });
 	for (auto& i : c.get_childs()) {
-		if (i.second.get_type() == "EuclideanSpace")
-			draw_component(static_cast<EuclideanSpace&>(i.second));
+		//if (i.second.get_type() == "EuclideanSpace")
+			//draw_component(static_cast<EuclideanSpace&>(i.second));
 		if (i.second.get_type() == "MenuBar")
 			draw_component(static_cast<MenuBar&>(i.second));
 		if (i.second.get_type() == "Table")
 			draw_component(static_cast<Table&>(i.second));
 	}
 }
-
+/*
 void Graphic::draw_component(const EuclideanSpace& espc)
 {
 	Rect rect(_curr_col, _curr_row, espc.get_width(), espc.get_height());
-	fill_rect(rect, { 150, 150, 150 });
-	draw_rect(rect, { 150, 150, 150 });
+	// fill_rect(rect, { 150, 150, 150 });
+	// draw_rect(rect, { 150, 150, 150 });
 	// Draw e context
 	Point2D ori = rect.get_origin();
 	int curr_row = ori.get_y() + 1, curr_col = ori.get_x() + 1;
@@ -73,7 +73,7 @@ void Graphic::draw_component(const EuclideanSpace& espc)
 	for (auto& i : espc.get_points())
 		_draw_at((char*)".", center.get_x() + i.get_x(), center.get_y() + i.get_y());
 	_set_row_col(rect);
-}
+} */
 
 void Graphic::draw_component(const MenuBar& mbar)
 {
@@ -87,7 +87,7 @@ void Graphic::draw_component(const MenuBar& mbar)
 		_draw_at((char *)mbar.get_menu()[i].get_name().c_str(), curr_col, curr_row);
 		curr_col += mbar.get_menu()[i].get_name().size() + 1;
 		_draw_at((char *)u8"\u2502 ", curr_col++, curr_row);
-	}	
+	}
 	_set_row_col(rect);
 }
 

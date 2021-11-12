@@ -31,12 +31,12 @@
 
 1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\rgb.h
 
-1636409070 source:g:\programacion\cpp\github\vtgraph\vtgraph\os\win32.cpp
+1636673602 source:g:\programacion\cpp\github\vtgraph\vtgraph\os\win32.cpp
 	"win32.h"
 	<stdio.h>
 	<stdio.h>
 
-1585098983 g:\programacion\cpp\github\vtgraph\vtgraph\os\win32.h
+1636732020 g:\programacion\cpp\github\vtgraph\vtgraph\os\win32.h
 	<windows.h>
 	"platform.h"
 
@@ -97,8 +97,9 @@
 	"layer.h"
 	"../base/debug_tools.h"
 
-1636501226 g:\programacion\cpp\github\vtgraph\vtgraph\vterm\vterm.h
+1636732773 g:\programacion\cpp\github\vtgraph\vtgraph\vterm\vterm.h
 	"command.h"
+	"../os/os.h"
 
 1585098983 g:\programacion\cpp\github\vtgraph\vtgraph\vterm\command.h
 	"sequences.h"
@@ -217,7 +218,7 @@
 	"layer.h"
 	"../gfx/point2d.h"
 
-1585098983 g:\programacion\cpp\github\vtgraph\vtgraph\ui\geometric.h
+1636732729 g:\programacion\cpp\github\vtgraph\vtgraph\ui\geometric.h
 	<vector>
 	"../gfx/gfx.h"
 
@@ -231,8 +232,10 @@
 	"graphic.h"
 	"ui_component.h"
 
-1636567926 g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.h
+1636674385 g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.h
+	<vector>
 	"../gfx/point2d.h"
+	"../gfx/point3d.h"
 	"../gfx/line.h"
 	"../gfx/rect.h"
 	"../vterm/vterm.h"
@@ -268,11 +271,12 @@
 	<string>
 	"ui_component.h"
 
-1585098983 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\geometric.cpp
+1636732743 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\geometric.cpp
 	"geometric.h"
 
-1636567781 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.cpp
+1636674359 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.cpp
 	"graphic.h"
+	<cmath>
 
 1585098983 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\menubar.cpp
 	"menubar.h"
@@ -285,7 +289,7 @@
 1585098983 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\ui_component.cpp
 	"ui_component.h"
 
-1636571094 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
+1636674832 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
 	<iostream>
 	<vector>
 	<cassert>
@@ -294,6 +298,7 @@
 	"gfx/gfx.h"
 	"os/os.h"
 	"vterm/vterm.h"
+	"ui/graphic.h"
 	<thread>
 	<ctime>
 

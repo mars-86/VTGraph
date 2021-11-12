@@ -3,6 +3,43 @@
 
 namespace os {
 
+HANDLE get_std_handle(unsigned long handle)
+{
+    return GetStdHandle(handle);
+}
+
+void set_console_output_fm(unsigned int format)
+{
+    SetConsoleOutputCP(format);
+}
+
+int get_container_size(HANDLE stdh, ContainerSize *cs)
+{
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    if (!stdh || !cs) return 0;
+    GetConsoleScreenBufferInfo(stdh, &csbi);
+    cs->cs_row = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+    cs->cs_col = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+    return 1;
+}
+
+void set_console_font(HANDLE stdh, const wchar_t *name, int width, int height)
+{
+    CONSOLE_FONT_INFOEX info = { 0 };
+    info.cbSize = sizeof(info);
+    if (width) info.dwFontSize.X = width;
+    if (height) info.dwFontSize.Y = height;
+    info.FontWeight = FW_NORMAL;
+    wcscpy_s(info.FaceName, name);
+    SetCurrentConsoleFontEx(stdh, NULL, &info);
+}
+
+void set_console_mode(HANDLE stdh, unsigned long mode, DWORD *m)
+{
+    SetConsoleMode(stdh, mode);
+    if (m) GetConsoleMode(stdh, m);
+}
+
 HWND _init_instance(ContainerSize* cs)
 {
     // Get console window handle
@@ -10,23 +47,14 @@ HWND _init_instance(ContainerSize* cs)
     // Move window to required position
     //MoveWindow(wh, 0, 0, 1900, 1600, TRUE);
 
-    HANDLE stdh = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    GetConsoleScreenBufferInfo(stdh, &csbi);
-    cs->cs_row = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-    cs->cs_col = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-    SetConsoleOutputCP(CP_UTF8);
-    DWORD mode;
+    HANDLE stdh = get_std_handle(STD_OUTPUT_HANDLE);
+    get_container_size(stdh, cs);
+    set_console_output_fm(CP_UTF8);
     // 0x0008 DISABLE_NEWLINE_AUTO_RETURN
     // 0x0004 ENABLE_VIRTUAL_TERMINAL_PROCESSING
-    SetConsoleMode(stdh, 0x0004 | 0x0007 | 0x0008);
-    GetConsoleMode(stdh, &mode);
-    CONSOLE_FONT_INFOEX info = { 0 };
-    info.cbSize = sizeof(info);
-    info.dwFontSize.Y = 14; // leave X as zero
-    info.FontWeight = FW_NORMAL;
-    wcscpy_s(info.FaceName, L"Iosevka");
-    SetCurrentConsoleFontEx(stdh, NULL, &info);
+    set_console_mode(stdh, 0x0004 | 0x0007 | 0x0008, nullptr);
+
+    set_console_font(stdh, L"Iosevka", 0, 0);
 
     CONSOLE_CURSOR_INFO lpCursor;
     lpCursor.bVisible = 0;
@@ -36,6 +64,7 @@ HWND _init_instance(ContainerSize* cs)
     // TODO - return display instance
     return wh;
 }
+
 
 BOOL _change_window_message_filter_es(HWND handle)
 {

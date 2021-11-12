@@ -1,18 +1,51 @@
 #include "graphic.h"
+#include <cmath>
+
+#define PI 3.14159265
 
 namespace ui {
 
 Graphic::Graphic(short dwable_w, short dwable_h)
 	: _dwable_w(dwable_w), _dwable_h(dwable_h)
 {
-	_init();
-	std::cout << "\x1B[107m";
-	std::cout << "\x1B[30m";
+	// _init();
+	// std::cout << "\x1B[107m";
+	// std::cout << "\x1B[30m";
+}
+
+Graphic::Graphic(void *context, short dwable_w, short dwable_h)
+	: _dwable_w(dwable_w), _dwable_h(dwable_h)
+{
+	// _init();
+	// std::cout << "\x1B[107m";
+	// std::cout << "\x1B[30m";
 }
 
 Graphic::~Graphic()
 {
-	_dealloc();
+	// _dealloc();
+}
+
+void Graphic::draw(const std::vector<Point2D>& points)
+{
+    // _gen_symbol(points);
+    for (auto i : points)
+        put((char *)u8"\u2836", i.get_x(), i.get_y());
+
+    put_buffer(points);
+}
+
+void Graphic::erase(const std::vector<Point2D>& points)
+{
+    // _gen_symbol(points);
+    for (auto i : points)
+        put((char *)" ", i.get_x(), i.get_y());
+}
+
+const char* Graphic::_gen_symbol(const std::vector<Point2D>& points)
+{
+    for (int i = 0; i < points.size() - 1; ++i)
+        std::cout << atan2(points[i + 1].get_y() - points[i].get_y(), points[i + 1].get_x() - points[i].get_x()) * 180 / PI << std::endl;
 }
 
 void Graphic::draw_rect(const Rect& rect, const Color& color)

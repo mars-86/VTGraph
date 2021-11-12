@@ -6,6 +6,7 @@
 #include "gfx/gfx.h"
 #include "os/os.h"
 #include "vterm/vterm.h"
+#include "ui/graphic.h"
 
 #include <thread>
 #include <ctime>
@@ -16,19 +17,55 @@ LRESULT CALLBACK term_proc(HANDLE, UINT, WPARAM, LPARAM);
 
 int main(int argc, char* argv[]) {
 
-    Sleep(3000);
+std::getchar();
     os::ContainerSize size;
     os::_init_instance(&size);
-
-    vterm::VTerm vt;
-    std::cout << "\x1B[?25h";
+    std::cout << size.cs_col << size.cs_row << std::endl;
+    // std::getchar();
+    // vterm::VTerm vt;
+    // std::cout << "\x1B[?25h";
 	// vt.set_cursor_visibility(VTERM_CURSOR_HIDE);
-	vt.set_title("VTERM");
+	// vt.set_title("VTERM");
     std::vector<std::string> head = { "X", "Y" };
     std::vector<std::vector<std::string>> data = { {"1", "2"}, {"5", "10"}, {"3", "4"} };
 
-    std::string bra = u8"\u280A";
-    std::cout << bra;
+    // std::string bra = u8"\u280A";
+    // std::cout << bra;
+    std::vector<gfx::Point2D> sine;
+    double n1 = 5;
+    for (double i = 0; i < PI * 4; i += .1) {
+                sine.push_back({ (int)(n1), (int)(15 + 10 * (sin(i))) });
+                // canvas.draw(line2);
+                //x1 = (int)n;
+                //y1 = (int)(80 + 50 * sin(i));
+                n1 += 0.314;
+            }
+
+    gfx::Line line(70, 60, 40, 40, { 230, 40, 86 });
+    gfx::Rect rect(25, 25, 20, 10, { 50, 150, 200, 0 });
+    gfx::Circle circle(50, 15, 10, { 230, 40, 86 });
+    gfx::Parable parable(33, 20, 0, 0, { 230, 40, 86 });
+    gfx::Parable parable2(100, 20, 115, 115, { 230, 40, 86 });
+    gfx::Line line3(70, 10, 200, 30, { 230, 40, 86 });
+
+    ui::Graphic gr(nullptr, size.cs_col, size.cs_row);
+    //gr.draw({{10, 10}, {11, 10}, {12, 10}, {13, 10}, {14, 10}, {15, 10}, {16, 10}, {17, 10}, {18, 10}, {19, 10}});
+    //gr.draw({{10, 10}, {11, 11}, {12, 12}, {13, 13}, {14, 14}, {15, 15}, {16, 16}, {17, 17}, {18, 18}, {19, 19}});
+    //gr.draw({{50, 10}, {49, 11}, {48, 12}, {47, 13}, {46, 14}, {45, 15}, {44, 16}, {43, 17}, {42, 18}, {41, 19}});
+    // gr.draw(sine);
+    for (int i = 0, j= 1; i < 10; ++i) {
+        while (j < 81) {
+            gfx::Line line3(1, 40, 200, j++, { 230, 40, 86 });
+            gr.draw(line3.get_bounds());
+            gr.erase(line3.get_bounds());
+        }
+        while (j > 1) {
+            gfx::Line line3(1, 40, 200, j--, { 230, 40, 86 });
+            gr.draw(line3.get_bounds());
+            gr.erase(line3.get_bounds());
+        }
+    }
+
     std::getchar();
 	ui::Frame frame("VIRTUAL TERMINAL GRAPHICS", size.cs_col, size.cs_row);
 	ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 1, frame.get_max_height() - 2, ui::POSITION::TOP);

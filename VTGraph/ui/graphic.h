@@ -26,9 +26,14 @@ public:
 	Graphic(void *context, short dwable_w, short dwable_h);
 	~Graphic();
 
+	void draw(const char *s, int x, int y);
+	void draw(const char *s, int x, int y, int z);
 	void draw(const std::vector<Point2D>& points);
 	void draw(const std::vector<Point3D>& points);
+	void erase(int x, int y);
+	void erase(int x, int y, int z);
 	void erase(const std::vector<Point2D>& points);
+	void erase(const std::vector<Point3D>& points);
 	const char* _gen_symbol(const std::vector<Point2D>& points);
 	void print(void);
 	void draw_rect(const Rect& rect, const Color& color);

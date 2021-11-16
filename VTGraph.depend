@@ -97,9 +97,10 @@
 	"layer.h"
 	"../base/debug_tools.h"
 
-1636732773 g:\programacion\cpp\github\vtgraph\vtgraph\vterm\vterm.h
+1637018022 g:\programacion\cpp\github\vtgraph\vtgraph\vterm\vterm.h
 	"command.h"
 	"../os/os.h"
+	"../gfx/point2d.h"
 
 1585098983 g:\programacion\cpp\github\vtgraph\vtgraph\vterm\command.h
 	"sequences.h"
@@ -232,7 +233,7 @@
 	"graphic.h"
 	"ui_component.h"
 
-1636674385 g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.h
+1637017651 g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.h
 	<vector>
 	"../gfx/point2d.h"
 	"../gfx/point3d.h"
@@ -274,7 +275,7 @@
 1636732743 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\geometric.cpp
 	"geometric.h"
 
-1636674359 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.cpp
+1637020126 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.cpp
 	"graphic.h"
 	<cmath>
 
@@ -289,7 +290,7 @@
 1585098983 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\ui_component.cpp
 	"ui_component.h"
 
-1636674832 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
+1637082616 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
 	<iostream>
 	<vector>
 	<cassert>

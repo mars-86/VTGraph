@@ -26,20 +26,26 @@ Graphic::~Graphic()
 	// _dealloc();
 }
 
+void Graphic::draw(const char *s, int x, int y)
+{
+    put(s, x, y);
+}
+
 void Graphic::draw(const std::vector<Point2D>& points)
 {
     // _gen_symbol(points);
-    for (auto i : points)
-        put((char *)u8"\u2836", i.get_x(), i.get_y());
-
     put_buffer(points);
+    std::string s;
+    for (auto i : get_screen_buffer()) s += (i ? u8"\u2550" : " ");
+    std::cout << s << std::flush;
 }
 
 void Graphic::erase(const std::vector<Point2D>& points)
 {
-    // _gen_symbol(points);
-    for (auto i : points)
-        put((char *)" ", i.get_x(), i.get_y());
+    erase_buffer(points);
+    std::string s;
+    for (auto i : get_screen_buffer()) s += (i ? "." : " ");
+    std::cout << s << std::flush;
 }
 
 const char* Graphic::_gen_symbol(const std::vector<Point2D>& points)

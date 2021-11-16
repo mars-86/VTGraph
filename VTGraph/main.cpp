@@ -33,8 +33,8 @@ std::getchar();
     // std::cout << bra;
     std::vector<gfx::Point2D> sine;
     double n1 = 5;
-    for (double i = 0; i < PI * 4; i += .1) {
-                sine.push_back({ (int)(n1), (int)(15 + 10 * (sin(i))) });
+    for (double i = 0; i < PI * 4; i += .03) {
+                sine.push_back({ (int)(n1), (int)(25 + 10 * (sin(i))) });
                 // canvas.draw(line2);
                 //x1 = (int)n;
                 //y1 = (int)(80 + 50 * sin(i));
@@ -52,20 +52,24 @@ std::getchar();
     //gr.draw({{10, 10}, {11, 10}, {12, 10}, {13, 10}, {14, 10}, {15, 10}, {16, 10}, {17, 10}, {18, 10}, {19, 10}});
     //gr.draw({{10, 10}, {11, 11}, {12, 12}, {13, 13}, {14, 14}, {15, 15}, {16, 16}, {17, 17}, {18, 18}, {19, 19}});
     //gr.draw({{50, 10}, {49, 11}, {48, 12}, {47, 13}, {46, 14}, {45, 15}, {44, 16}, {43, 17}, {42, 18}, {41, 19}});
-    // gr.draw(sine);
-    for (int i = 0, j= 1; i < 10; ++i) {
-        while (j < 81) {
-            gfx::Line line3(1, 40, 200, j++, { 230, 40, 86 });
+    gr.draw(rect.get_bounds());
+    std::getchar();
+    return 0;
+    for (int i = 0, j= 10; i < 2; ++i) {
+        while (j < 60) {
+            gfx::Line line3(1, 40, 30, j++, { 230, 40, 86 });
             gr.draw(line3.get_bounds());
+            Sleep(33);
             gr.erase(line3.get_bounds());
         }
-        while (j > 1) {
-            gfx::Line line3(1, 40, 200, j--, { 230, 40, 86 });
+        while (j > 10) {
+            gfx::Line line3(1, 40, 30, j--, { 230, 40, 86 });
             gr.draw(line3.get_bounds());
+            Sleep(33);
             gr.erase(line3.get_bounds());
         }
     }
-
+    return 0;
     std::getchar();
 	ui::Frame frame("VIRTUAL TERMINAL GRAPHICS", size.cs_col, size.cs_row);
 	ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 1, frame.get_max_height() - 2, ui::POSITION::TOP);

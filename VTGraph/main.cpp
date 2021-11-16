@@ -52,8 +52,13 @@ std::getchar();
     //gr.draw({{10, 10}, {11, 10}, {12, 10}, {13, 10}, {14, 10}, {15, 10}, {16, 10}, {17, 10}, {18, 10}, {19, 10}});
     //gr.draw({{10, 10}, {11, 11}, {12, 12}, {13, 13}, {14, 14}, {15, 15}, {16, 16}, {17, 17}, {18, 18}, {19, 19}});
     //gr.draw({{50, 10}, {49, 11}, {48, 12}, {47, 13}, {46, 14}, {45, 15}, {44, 16}, {43, 17}, {42, 18}, {41, 19}});
-    gr.draw(rect.get_bounds());
-    std::getchar();
+    for (int i = 41; i < 100; ++i) {
+        gr.draw(rect.get_bounds());
+        Sleep(100);
+        gr.erase(rect.get_bounds());
+        rect.translate({i, 25});
+        gr.draw(rect.get_bounds());
+    }
     return 0;
     for (int i = 0, j= 10; i < 2; ++i) {
         while (j < 60) {

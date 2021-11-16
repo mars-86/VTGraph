@@ -120,7 +120,7 @@
 	"ellipse.h"
 	"parable.h"
 
-1583681268 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\shape2d.h
+1637087238 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\shape2d.h
 	<vector>
 	"shape.h"
 	"point2d.h"
@@ -131,7 +131,7 @@
 
 1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\point2d.h
 
-1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\shape3d.h
+1637087262 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\shape3d.h
 	<vector>
 	"shape.h"
 	"point3d.h"
@@ -139,11 +139,11 @@
 1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\point3d.h
 	"point2d.h"
 
-1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\line.h
+1637087824 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\line.h
 	<cmath>
 	"shape2d.h"
 
-1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\rect.h
+1637087519 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\rect.h
 	<vector>
 	"shape2d.h"
 	"line.h"
@@ -152,14 +152,14 @@
 	<vector>
 	"rect.h"
 
-1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\circle.h
+1637087857 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\circle.h
 	<cmath>
 	"shape2d.h"
 
-1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\ellipse.h
+1637087844 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\ellipse.h
 	"shape2d.h"
 
-1583384900 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\parable.h
+1637087879 g:\programacion\cpp\github\vtgraph\vtgraph\gfx\parable.h
 	<cmath>
 	<iostream>
 	"shape2d.h"
@@ -290,7 +290,7 @@
 1585098983 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\ui_component.cpp
 	"ui_component.h"
 
-1637082616 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
+1637088847 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
 	<iostream>
 	<vector>
 	<cassert>

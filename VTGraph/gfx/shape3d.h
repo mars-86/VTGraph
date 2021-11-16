@@ -14,6 +14,7 @@ public:
 	Shape3DT() {}
 	virtual ~Shape3DT() {}
 	virtual double get_area(void) const = 0;
+	virtual void translate(const Point3DT<T>& point) = 0;
 	std::vector<Point3DT<T>>& get_points(void) { return _points; }
 	const std::vector<Point3DT<T>>& get_points(void) const { return _points; }
 protected:

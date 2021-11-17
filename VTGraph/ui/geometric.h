@@ -18,8 +18,8 @@ public:
 	void fill_rect(const Rect& rect, const Color& color);
 	void draw_circle(const Circle& rect, const Color& color);
 	void fill_circle(const Circle& rect, const Color& color);
-	void draw_ellipse(const Ellipse& rect, const Color& color);
-	void fill_ellipse(const Ellipse& rect, const Color& color);
+ 	// void draw_ellipse(const Ellipse& rect, const Color& color);
+	// void fill_ellipse(const Ellipse& rect, const Color& color);
 	const std::vector<Point2D>& get_points(void) const;
 protected:
 	void _draw_function(const std::vector<Point2D> points);

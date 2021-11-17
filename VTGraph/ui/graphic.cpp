@@ -1,18 +1,105 @@
 #include "graphic.h"
+#include <cmath>
+
+#define PI 3.14159265
 
 namespace ui {
 
-Graphic::Graphic(short dwable_w, short dwable_h) 
+Graphic::Graphic(short dwable_w, short dwable_h)
 	: _dwable_w(dwable_w), _dwable_h(dwable_h)
 {
-	_init();
-	std::cout << "\x1B[107m";
-	std::cout << "\x1B[30m";
+	// _init();
+	// std::cout << "\x1B[107m";
+	// std::cout << "\x1B[30m";
+}
+
+Graphic::Graphic(void *context, short dwable_w, short dwable_h)
+	: _dwable_w(dwable_w), _dwable_h(dwable_h)
+{
+	// _init();
+	// std::cout << "\x1B[107m";
+	// std::cout << "\x1B[30m";
 }
 
 Graphic::~Graphic()
 {
-	_dealloc();
+	// _dealloc();
+}
+
+void Graphic::draw(const char *s, int x, int y)
+{
+    put(s, x, y);
+}
+
+void Graphic::draw(const std::vector<Point2D>& points)
+{
+    // _gen_symbol(points);
+    put_buffer(points);
+    std::string s;
+    for (auto i : get_screen_buffer()) s += (i ? u8"\u2550" : " ");
+    std::cout << s << std::flush;
+    set_cursor_pos(1, 1);
+}
+
+/*
+void Graphic::draw(const std::vector<Point2D>& points)
+{
+    // _gen_symbol(points);
+    put_buffer(points);
+    std::string s;
+    for (auto i : get_screen_buffer()) s += (i ? u8"\u2550" : " ");
+    std::cout << s;
+    set_cursor_pos(1, 1);
+}
+
+void Graphic::draw(const std::vector<Point2D>& points)
+{
+    // _gen_symbol(points);
+    put_buffer(points);
+    std::string shape("");
+    // for (auto i : get_screen_buffer()) s += (i ? u8"\u2550" : " ");
+    auto sb = get_screen_buffer(points);
+    for (int i = 0; i < sb.size(); ++i) {
+        set_cursor_pos(points[i].get_x(), points[i].get_y());
+        std::cout << (sb[i] ? u8"\u2550" : " ");
+        // std::cout << sb[points] << std::flush;
+    }
+    set_cursor_pos(1, 1);
+
+}
+*/
+
+void Graphic::draw(const Shape2D& shape)
+{
+    put_buffer(shape.get_bounds());
+    std::string s;
+    for (auto i : get_screen_buffer()) s += (i ? u8"\u2550" : " ");
+    std::cout << s;
+    set_cursor_pos(1, 1);
+}
+
+void Graphic::erase(const std::vector<Point2D>& points)
+{
+    erase_buffer(points);
+    std::string s;
+    for (auto i : get_screen_buffer()) s += (i ? "." : " ");
+    std::cout << s << std::flush;
+    set_cursor_pos(1, 1);
+}
+
+void Graphic::erase(const Shape2D& shape)
+{
+    erase_buffer(shape.get_bounds());
+    std::string s;
+    for (auto i : get_screen_buffer()) s += (i ? "." : " ");
+    std::cout << s << std::flush;
+    set_cursor_pos(1, 1);
+}
+
+const char* Graphic::_gen_symbol(const std::vector<Point2D>& points)
+{
+    for (int i = 0; i < points.size() - 1; ++i)
+        std::cout << atan2(points[i + 1].get_y() - points[i].get_y(), points[i + 1].get_x() - points[i].get_x()) * 180 / PI << std::endl;
 }
 
 void Graphic::draw_rect(const Rect& rect, const Color& color)
@@ -43,20 +130,20 @@ void Graphic::draw_component(const Container& c)
 	//fill_rect(rect, { 150, 150, 150 });
 	//draw_rect(rect, { 150, 150, 150 });
 	for (auto& i : c.get_childs()) {
-		if (i.second.get_type() == "EuclideanSpace")
-			draw_component(static_cast<EuclideanSpace&>(i.second));
+		//if (i.second.get_type() == "EuclideanSpace")
+			//draw_component(static_cast<EuclideanSpace&>(i.second));
 		if (i.second.get_type() == "MenuBar")
 			draw_component(static_cast<MenuBar&>(i.second));
 		if (i.second.get_type() == "Table")
 			draw_component(static_cast<Table&>(i.second));
 	}
 }
-
+/*
 void Graphic::draw_component(const EuclideanSpace& espc)
 {
 	Rect rect(_curr_col, _curr_row, espc.get_width(), espc.get_height());
-	fill_rect(rect, { 150, 150, 150 });
-	draw_rect(rect, { 150, 150, 150 });
+	// fill_rect(rect, { 150, 150, 150 });
+	// draw_rect(rect, { 150, 150, 150 });
 	// Draw e context
 	Point2D ori = rect.get_origin();
 	int curr_row = ori.get_y() + 1, curr_col = ori.get_x() + 1;
@@ -73,7 +160,7 @@ void Graphic::draw_component(const EuclideanSpace& espc)
 	for (auto& i : espc.get_points())
 		_draw_at((char*)".", center.get_x() + i.get_x(), center.get_y() + i.get_y());
 	_set_row_col(rect);
-}
+} */
 
 void Graphic::draw_component(const MenuBar& mbar)
 {
@@ -87,7 +174,7 @@ void Graphic::draw_component(const MenuBar& mbar)
 		_draw_at((char *)mbar.get_menu()[i].get_name().c_str(), curr_col, curr_row);
 		curr_col += mbar.get_menu()[i].get_name().size() + 1;
 		_draw_at((char *)u8"\u2502 ", curr_col++, curr_row);
-	}	
+	}
 	_set_row_col(rect);
 }
 

@@ -25,12 +25,12 @@ public:
 		this->set_color(color.get_rgba());
 		draw(x, y, radius);
 	}
-	
+
 	~CircleT()
 	{
 		this->_points.clear();
 	};
-	
+
 	void draw(T x, T y, T radius, T _ = 0)
 	{
 		T x0 = 0,
@@ -54,9 +54,9 @@ public:
 				{x + x0, y - y0/* - 1*/}, {x + y0, y - x0/* - 1*/},
 				{x - x0, y + y0}, {x - y0, y + x0}
 			});
-		}	
+		}
 	}
-	
+
 	void set_size(T width, T height) {}
 
 	double get_size(void) const
@@ -68,6 +68,13 @@ public:
 	{
 		return 0;
 	}
+
+	void translate(const Point2DT<T>& point)
+	{
+        this->_points.clear();
+        // this->draw();
+	}
+
 private:
 	T _x, _y, _radius;
 };

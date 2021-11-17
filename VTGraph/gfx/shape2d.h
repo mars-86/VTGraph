@@ -14,6 +14,7 @@ public:
 	Shape2DT() {}
 	virtual ~Shape2DT() {}
 	virtual double get_area(void) const = 0;
+	virtual void translate(const Point2DT<T>& point) = 0;
 	//std::vector<Point2DT<T>>& get_points(void) { return _points; }
 	const std::vector<Point2DT<T>>& get_bounds(void) const { return _points; }
 	const Point2DT<T>& get_origin(void) const { return _points[0]; }

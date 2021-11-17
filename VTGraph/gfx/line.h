@@ -12,7 +12,7 @@ class LineT : public Shape2DT<T> {
 public:
 	LineT()
 		: _x1(0), _y1(0), _x2(0), _y2(0) {}
-	
+
 	LineT(T x1, T y1, T x2, T y2)
 		: _x1(0), _y1(0), _x2(0), _y2(0)
 	{
@@ -28,7 +28,7 @@ public:
 
 	~LineT()
 	{
-		this->_points.clear();	
+		this->_points.clear();
 	}
 
 	void draw(T x1, T y1, T x2, T y2)
@@ -41,8 +41,8 @@ public:
 		while (true){   /* loop */
 			this->_points.push_back({ x1, y1 });
 			if( x1 == x2 && y1 == y2) break;
-			int e2 = e1 << 1; 
-			if (e2 >= dy){ 
+			int e2 = e1 << 1;
+			if (e2 >= dy){
 				e1 += dy; /* e_xy+e_x > 0 */
 				x1 += sx;
 			}
@@ -52,18 +52,25 @@ public:
 			}
 		}
 	}
-	
+
 	void set_size(T width, T height) {};
-	
+
 	double get_size(void) const
 	{
 		return 0;
 	}
-	
+
 	double get_area(void) const
 	{
 		return 0;
 	}
+
+	void translate(const Point2DT<T>& point)
+	{
+        this->_points.clear();
+        // this->draw();
+	}
+
 private:
 	T _x1, _y1, _x2, _y2;
 };

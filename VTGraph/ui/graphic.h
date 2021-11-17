@@ -14,6 +14,7 @@
 #include "euclidean_space.h"
 #include "menubar.h"
 #include "table.h"
+#include "../gfx/shape2d.h"
 
 namespace ui {
 
@@ -30,10 +31,12 @@ public:
 	void draw(const char *s, int x, int y, int z);
 	void draw(const std::vector<Point2D>& points);
 	void draw(const std::vector<Point3D>& points);
+	void draw(const Shape2D& shape);
 	void erase(int x, int y);
 	void erase(int x, int y, int z);
 	void erase(const std::vector<Point2D>& points);
 	void erase(const std::vector<Point3D>& points);
+	void erase(const Shape2D& shape);
 	const char* _gen_symbol(const std::vector<Point2D>& points);
 	void print(void);
 	void draw_rect(const Rect& rect, const Color& color);

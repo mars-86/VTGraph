@@ -97,7 +97,7 @@
 	"layer.h"
 	"../base/debug_tools.h"
 
-1637018022 g:\programacion\cpp\github\vtgraph\vtgraph\vterm\vterm.h
+1637116589 g:\programacion\cpp\github\vtgraph\vtgraph\vterm\vterm.h
 	"command.h"
 	"../os/os.h"
 	"../gfx/point2d.h"
@@ -233,7 +233,7 @@
 	"graphic.h"
 	"ui_component.h"
 
-1637017651 g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.h
+1637103157 g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.h
 	<vector>
 	"../gfx/point2d.h"
 	"../gfx/point3d.h"
@@ -246,6 +246,7 @@
 	"euclidean_space.h"
 	"menubar.h"
 	"table.h"
+	"../gfx/shape2d.h"
 
 1585098983 g:\programacion\cpp\github\vtgraph\vtgraph\ui\menubar.h
 	<vector>
@@ -275,7 +276,7 @@
 1636732743 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\geometric.cpp
 	"geometric.h"
 
-1637020126 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.cpp
+1637116467 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\graphic.cpp
 	"graphic.h"
 	<cmath>
 
@@ -290,7 +291,7 @@
 1585098983 source:g:\programacion\cpp\github\vtgraph\vtgraph\ui\ui_component.cpp
 	"ui_component.h"
 
-1637088847 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
+1637116712 source:g:\programacion\cpp\github\vtgraph\vtgraph\main.cpp
 	<iostream>
 	<vector>
 	<cassert>

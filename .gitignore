@@ -34,5 +34,6 @@
 # Visual Studio Folders
 .vs/
 VTGraph/Debug/
+Debug/
 x64/
 x32/

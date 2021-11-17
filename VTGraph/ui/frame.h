@@ -3,31 +3,30 @@
 #pragma once
 
 #include <map>
+#include <string>
 #include "container.h"
 #include "graphic.h"
 #include "ui_component.h"
-#include "../vterm/vterm.h"
 
 namespace ui {
 
 using namespace vterm;
 
-class Frame : public Container, public VTerm {
+class Frame : public Container {
 public:
 	Frame(short width, short height);
+	Frame(std::string app_name, short width, short height);
 	~Frame();
 
 	const short get_max_width(void) const;
 	const short get_max_height(void) const;
+	void set_app_name(std::string app_name);
+	const std::string& get_app_name(void) const;
 	void visible(void);
 private:
-	dwchar_t** _drawable = NULL;
-	//Drawer* _drawer;
-	short _curr_row = 1, _curr_col = 1;
-	void _draw(const UIComponent& uic);	
-	void _init(void);
-	void _alloc(void);
-	void _dealloc(void);
+	std::string _app_name;
+	Graphic* _drawer;
+	void _draw(const UIComponent& uic);
 };
 
 } // namespace ui

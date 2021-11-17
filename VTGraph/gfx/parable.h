@@ -30,7 +30,7 @@ public:
 
 	~ParableT()
 	{
-		this->_points.clear();	
+		this->_points.clear();
 	}
 
 	void draw(T x, T y, T rx, T ry)
@@ -62,6 +62,13 @@ public:
 	{
 		return 0;
 	}
+
+	void translate(const Point2DT<T>& point)
+	{
+        this->_points.clear();
+        // this->draw();
+	}
+
 private:
 	T _x, _y, _rx, _ry;
 };

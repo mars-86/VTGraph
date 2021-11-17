@@ -8,12 +8,12 @@
 #include "win32.h"
 #endif // __linux__
 
+
 #undef NULL
 #ifdef __cplusplus
 #define NULL nullptr
 #else
 #define NULL ((void*)0)
 #endif // __cplusplus
-
 
 #endif // OS_OS_H

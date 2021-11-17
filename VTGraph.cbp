@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="VTGraph" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/VTGraph" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/VTGraph" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="VTGraph/base/allocator_block.cpp" />
+		<Unit filename="VTGraph/base/allocator_block.h" />
+		<Unit filename="VTGraph/base/base.h" />
+		<Unit filename="VTGraph/base/debug_tools.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="VTGraph/base/debug_tools.h" />
+		<Unit filename="VTGraph/base/memory_manager.cpp" />
+		<Unit filename="VTGraph/base/memory_manager.h" />
+		<Unit filename="VTGraph/gfx/circle.h" />
+		<Unit filename="VTGraph/gfx/color.cpp" />
+		<Unit filename="VTGraph/gfx/color.h" />
+		<Unit filename="VTGraph/gfx/ellipse.h" />
+		<Unit filename="VTGraph/gfx/gfx.h" />
+		<Unit filename="VTGraph/gfx/line.h" />
+		<Unit filename="VTGraph/gfx/parable.h" />
+		<Unit filename="VTGraph/gfx/point2d.h" />
+		<Unit filename="VTGraph/gfx/point3d.h" />
+		<Unit filename="VTGraph/gfx/rect.h" />
+		<Unit filename="VTGraph/gfx/rgb.h" />
+		<Unit filename="VTGraph/gfx/shape.h" />
+		<Unit filename="VTGraph/gfx/shape2d.h" />
+		<Unit filename="VTGraph/gfx/shape3d.h" />
+		<Unit filename="VTGraph/gfx/square.h" />
+		<Unit filename="VTGraph/main.cpp" />
+		<Unit filename="VTGraph/os/os.h" />
+		<Unit filename="VTGraph/os/platform.h" />
+		<Unit filename="VTGraph/os/types.h" />
+		<Unit filename="VTGraph/os/win32.cpp" />
+		<Unit filename="VTGraph/os/win32.h" />
+		<Unit filename="VTGraph/os/x11.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="VTGraph/os/x11.cpp" />
+		<Unit filename="VTGraph/os/x11.h" />
+		<Unit filename="VTGraph/ui/bar.h" />
+		<Unit filename="VTGraph/ui/canvas.cpp" />
+		<Unit filename="VTGraph/ui/canvas.h" />
+		<Unit filename="VTGraph/ui/charset.h" />
+		<Unit filename="VTGraph/ui/component.cpp" />
+		<Unit filename="VTGraph/ui/component.h" />
+		<Unit filename="VTGraph/ui/container.cpp" />
+		<Unit filename="VTGraph/ui/container.h" />
+		<Unit filename="VTGraph/ui/drawer.cpp" />
+		<Unit filename="VTGraph/ui/drawer.h" />
+		<Unit filename="VTGraph/ui/euclidean_space.cpp" />
+		<Unit filename="VTGraph/ui/euclidean_space.h" />
+		<Unit filename="VTGraph/ui/frame.cpp" />
+		<Unit filename="VTGraph/ui/frame.h" />
+		<Unit filename="VTGraph/ui/geometric.cpp" />
+		<Unit filename="VTGraph/ui/geometric.h" />
+		<Unit filename="VTGraph/ui/graphic.cpp" />
+		<Unit filename="VTGraph/ui/graphic.h" />
+		<Unit filename="VTGraph/ui/item.h" />
+		<Unit filename="VTGraph/ui/menu.h" />
+		<Unit filename="VTGraph/ui/menu_item.h" />
+		<Unit filename="VTGraph/ui/menubar.cpp" />
+		<Unit filename="VTGraph/ui/menubar.h" />
+		<Unit filename="VTGraph/ui/region.cpp" />
+		<Unit filename="VTGraph/ui/region.h" />
+		<Unit filename="VTGraph/ui/table.cpp" />
+		<Unit filename="VTGraph/ui/table.h" />
+		<Unit filename="VTGraph/ui/ui.h" />
+		<Unit filename="VTGraph/ui/ui_component.cpp" />
+		<Unit filename="VTGraph/ui/ui_component.h" />
+		<Unit filename="VTGraph/vterm/command.h" />
+		<Unit filename="VTGraph/vterm/sequences.h" />
+		<Unit filename="VTGraph/vterm/vterm.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

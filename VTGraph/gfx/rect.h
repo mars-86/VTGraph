@@ -65,6 +65,13 @@ public:
 	{
 		return 0;
 	}
+
+	void translate(const Point2DT<T>& point)
+	{
+        this->_points.clear();
+        this->draw(point.get_x(), point.get_y(), this->get_width(), this->get_height());
+	}
+
 protected:
 	T _x, _y, _w, _h;
 };

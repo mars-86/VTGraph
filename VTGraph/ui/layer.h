@@ -4,19 +4,19 @@
 
 #include <string>
 #include <vector>
+#include "graphic.h"
 
 namespace ui {
 
-template <typename T>
-class LayerT {
+class Layer {
 public:
-	LayerT(short width, short height, short layer_deep)
+	Layer(short width, short height, short layer_deep)
         : _width(width), _height(height), _layer_deep(layer_deep)
     {
-        _layer.resize((width * height - 1), " ");
+        // _layer.resize(width * height - 1);
     }
 
-	~LayerT() {}
+	~Layer() {}
 
     short get_width(void) const
     {
@@ -57,7 +57,8 @@ private:
     short _width;
     short _height;
     short _layer_deep;
-    std::vector<T> _layer;
+    // ui::Graphic gr(0, 0);
+    // std::vector<gr> _layer;
 };
 
 }

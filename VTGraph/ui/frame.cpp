@@ -47,11 +47,11 @@ void Template::add_element(Element& el)
 
 void Frame::visible(void)
 {
-	/*for (auto& i : _child)
-		_drawer->draw_component(i.second);*/
-	_drawer->draw_component(*this);
-	std::string a_name = get_app_name();
-	_drawer->_draw_at((char*)a_name.c_str(), (get_max_width() / 2) - (get_app_name().size() / 2), 1);
+	// for (auto& i : _child)
+    //  _drawer->draw_component(i.second);
+	// _drawer->draw_component(*this);
+	// std::string a_name = get_app_name();
+	// _drawer->_draw_at((char*)a_name.c_str(), (get_max_width() / 2) - (get_app_name().size() / 2), 1);
 }
 
 const short Frame::get_max_width(void) const
@@ -79,7 +79,7 @@ void Frame::_draw(const UIComponent& uic)
 	//_drawer->draw_rect(Rect(_curr_col, _curr_row, uic.get_size().cols, uic.get_size().rows), { 0, 0, 0 });
 	// Graphics.draw_rect();
 	//std::cout << uic.get_size().cols << std::endl;
-	
+
 /*
 	Rect rect(_curr_col, _curr_row, uic.get_width(), uic.get_height(), { 150, 150, 150 });
 	dwchar_t dwch;
@@ -98,7 +98,7 @@ void Frame::_draw(const UIComponent& uic)
 		for (int j = 0; j < uic.get_size().rows; ++j)
 			std::cout << _drawable[i][j];*/
 	/*std::cout << uic.get_size().cols << std::endl;*/
-	
+
 	/*for( int i = 0; i < uic.get_size().rows; ++i )
 		for( int j = 0; j < uic.get_size().cols; ++j )
 			std::cout << ".";*/

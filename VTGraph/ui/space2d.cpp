@@ -1,8 +1,8 @@
 #include "euclidean_space.h"
 
 namespace ui {
-
-EuclideanSpace::EuclideanSpace(short width, short height, POSITION position)
+/*
+Space2D::Space2D(short width, short height, POSITION position)
 	: UIComponent( {width, height}, "EuclideanSpace")
 {
     // _layers.push_back(Layer2D(width, height, 0));
@@ -49,5 +49,5 @@ void EuclideanSpace::_draw_axis_xyz(void)
 {
 
 }
-
+*/
 } // namespace ui

@@ -9,12 +9,12 @@
 
 namespace ui {
 
-enum class EUCLIDEAN_CONTEXT {
+enum class SPACE_CONTEXT {
 	_2D,
 	_3D
 };
 
-enum class EUCLIDEAN_AXIS {
+enum class SPACE_AXIS {
 	SIGNED,
 	SIGNED_X,
 	SIGNED_Y,
@@ -35,8 +35,8 @@ public:
 private:
 	std::string _e_context = "2D";
 	EUCLIDEAN_AXIS _e_axis = EUCLIDEAN_AXIS::SIGNED;
-	// ui::Layer _ly(0, 0, 0);
-	// std::vector<_ly> _layers;
+	ui::Layer _ly(0, 0, 0);
+	std::vector<_ly> _layers;
 
 	void _draw_axis(void);
     void _draw_axis_xy(void);

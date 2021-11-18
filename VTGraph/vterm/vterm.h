@@ -2,6 +2,7 @@
 #define VTERM_VTERM_H
 #pragma once
 
+#include <cmath>
 #include "command.h"
 #include "../os/os.h"
 #include "../gfx/point2d.h"
@@ -17,6 +18,7 @@ public:
 	    _stdh = os::get_std_handle(STD_OUTPUT_HANDLE);
 	    os::get_container_size(_stdh, &_cs);
 	    _buffer.resize(_cs.cs_col * _cs.cs_row, 0);
+	    _ratio = floor(_cs.cs_col / _cs.cs_row);
     }
 
 	virtual ~VTerm()
@@ -39,7 +41,23 @@ public:
 
 	virtual void put_buffer(const std::vector<gfx::Point2D>& points)
 	{
-        for(auto i : points) _buffer[_cs.cs_col * (i.get_y() - 1) + i.get_x() - 1] = 1;
+	    auto buf = points;
+	    int y = buf[0].get_y(), remainder = y % _ratio;
+        if (remainder) buf[0].set_y(y - remainder);
+	    for(int i = 1; i < buf.size(); ++i) {
+            y = buf[i].get_y(), remainder = y % _ratio;
+            if (remainder) buf[i].set_y(y - remainder);
+            // if (buf[i].get_y() - buf[i - 1].get_y() != 0) buf[i].set_y(buf[i].get_y() - (_ratio - 1));
+            // std::cout << buf[i].get_y() - buf[i - 1].get_y() << " ";
+            if (!(buf[i].get_y() ^ buf[i - 1].get_y()) && !(buf[i].get_x() ^ buf[i - 1].get_x())) buf.erase(buf.begin() + i), --i;
+	    }
+	    std::cout << buf.size() << std::endl;
+	    std::getchar();
+	    for(auto i : buf) {
+            std::cout << '{' << i.get_x() << " " << i.get_y() << '}' << " ";
+	    }
+	    std::getchar();
+        for(auto i : buf) _buffer[_cs.cs_col * (i.get_y() - 1) + i.get_x() - 1] = 1;
 	}
 
 	virtual void erase_buffer(const std::vector<gfx::Point2D>& points)
@@ -89,6 +107,7 @@ private:
     std::vector<int> _points_buffer;
     HANDLE _stdh;
     os::ContainerSize _cs;
+    int _ratio;
 
 };
 

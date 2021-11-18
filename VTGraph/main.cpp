@@ -47,15 +47,17 @@ int main(int argc, char* argv[]) {
     gfx::Parable parable(33, 20, 0, 0, { 230, 40, 86 });
     gfx::Parable parable2(100, 20, 115, 115, { 230, 40, 86 });
     gfx::Line line3(70, 10, 200, 30, { 230, 40, 86 });
+    gfx::Square sq(60, 25, 25, { 150, 170, 200 });
 
     ui::Graphic gr(nullptr, size.cs_col, size.cs_row);
     //gr.draw({{10, 10}, {11, 10}, {12, 10}, {13, 10}, {14, 10}, {15, 10}, {16, 10}, {17, 10}, {18, 10}, {19, 10}});
     //gr.draw({{10, 10}, {11, 11}, {12, 12}, {13, 13}, {14, 14}, {15, 15}, {16, 16}, {17, 17}, {18, 18}, {19, 19}});
     //gr.draw({{50, 10}, {49, 11}, {48, 12}, {47, 13}, {46, 14}, {45, 15}, {44, 16}, {43, 17}, {42, 18}, {41, 19}});
 
-    // gr.draw(rect);
-    // std::getchar();
-    // return 0;
+    gr.draw(sq);
+    std::getchar();
+    return 0;
+    /*
     for (int i = 41; i < 100; ++i) {
         gr.draw(rect);
         Sleep(33);
@@ -79,6 +81,7 @@ int main(int argc, char* argv[]) {
     }
     return 0;
     std::getchar();
+    */
 	ui::Frame frame("VIRTUAL TERMINAL GRAPHICS", size.cs_col, size.cs_row);
 	ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 1, frame.get_max_height() - 2, ui::POSITION::TOP);
 	eusp2d.draw_rect(5, 10, 20, 3, {150, 100, 200});
@@ -108,6 +111,7 @@ int main(int argc, char* argv[]) {
 	//std::cout << "W: " << frame.get_max_width() << std::endl << "H: " << frame.get_max_height() << std::endl;
     //std::cout << " " << g_win_tid << " " << pid;
     std::getchar();
+    return 0;
     int exec = 1;
     if (exec) {
         ui::Canvas canvas(size.cs_col, size.cs_row);//, ui::UNSIGNED);
@@ -119,7 +123,7 @@ int main(int argc, char* argv[]) {
         std::vector<ui::Point2D> parab;
         double n = 1;
         gfx::Rect rect(25, 25, 20, 10, { 50, 150, 200, 0 });
-        gfx::Square sq(60, 25, 25, { 150, 170, 200 });
+
         gfx::Line line(70, 60, 40, 40, { 230, 40, 86 });
         gfx::Line line2(40, 20, 70, 40, { 230, 40, 86 });
         gfx::Line line3(10, 10, 70, 11, { 230, 40, 86 });

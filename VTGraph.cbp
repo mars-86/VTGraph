@@ -86,6 +86,7 @@
 		<Unit filename="VTGraph/ui/graphic.cpp" />
 		<Unit filename="VTGraph/ui/graphic.h" />
 		<Unit filename="VTGraph/ui/item.h" />
+		<Unit filename="VTGraph/ui/layer.h" />
 		<Unit filename="VTGraph/ui/menu.h" />
 		<Unit filename="VTGraph/ui/menu_item.h" />
 		<Unit filename="VTGraph/ui/menubar.cpp" />

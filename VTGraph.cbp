@@ -93,6 +93,8 @@
 		<Unit filename="VTGraph/ui/menubar.h" />
 		<Unit filename="VTGraph/ui/region.cpp" />
 		<Unit filename="VTGraph/ui/region.h" />
+		<Unit filename="VTGraph/ui/space2d.cpp" />
+		<Unit filename="VTGraph/ui/space2d.h" />
 		<Unit filename="VTGraph/ui/table.cpp" />
 		<Unit filename="VTGraph/ui/table.h" />
 		<Unit filename="VTGraph/ui/ui.h" />

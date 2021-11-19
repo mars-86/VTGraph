@@ -13,4 +13,54 @@
 #include "ellipse.h"
 #include "parable.h"
 
+namespace gfx {
+
+template <typename T>
+class GFXT {
+public:
+	GFXT(int ratio) : _ratio(ratio) {}
+	~GFXT() {}
+
+	gfx::Circle circle(T x, T y, T radius, const gfx::Color& color)
+	{
+	    return gfx::CircleT<T>(x, y, radius, color);
+	}
+
+	gfx::Ellipse ellipse(T x, T y, T rx, T ry, const Color& color)
+	{
+	    T yt = y - (y % _ratio), rt = ry / _ratio;
+	    return gfx::EllipseT<T>(x, yt, rx, rt, color);
+	}
+
+	gfx::Line line(T x1, T y1, T x2, T y2, const Color& color)
+	{
+        return gfx::LineT<T>(x1, y1, x2, y2, color);
+	}
+
+	gfx::Parable parable(T x, T y, T rx, T ry, const Color& color)
+	{
+        return gfx::ParableT<T>(x, y, rx, ry, color);
+	}
+
+	gfx::Rect rectangle(T x, T y, T width, T height, const Color& color)
+	{
+	    T yt = y - (y % _ratio), ht = height / _ratio;
+        return gfx::RectT<T>(x, yt, width, ht, color);
+	}
+
+	gfx::Square& square(T x, T y, T size, const Color& color)
+	{
+        T yt = y - (y % _ratio), st = size / _ratio;
+        // return dynamic_cast<gfx::Square&>(gfx::RectT<T>(x, yt, size, st, color));
+	}
+
+private:
+    int _ratio;
+};
+
+typedef GFXT<int> GFX;
+typedef GFXT<double> GFXF;
+
+} // namespace gfx
+
 #endif // !GFX_GFX_H

@@ -41,6 +41,12 @@ int main(int argc, char* argv[]) {
         n1 += 0.314;
     }
 
+    gfx::GFX gfx(size.cs_col / size.cs_row);
+    auto squ = gfx.rectangle(60, 25, 25, 25, { 150, 170, 200 });
+    auto circ = gfx.ellipse(50, 15, 15, 18, { 230, 40, 86 });
+    gfx::Rect rect2(100, 24, 25, 25, { 150, 170, 200 });
+
+    std::getchar();
     gfx::Line line(70, 60, 40, 40, { 230, 40, 86 });
     gfx::Rect rect(25, 25, 20, 10, { 50, 150, 200, 0 });
     gfx::Circle circle(50, 15, 10, { 230, 40, 86 });
@@ -54,7 +60,9 @@ int main(int argc, char* argv[]) {
     //gr.draw({{10, 10}, {11, 11}, {12, 12}, {13, 13}, {14, 14}, {15, 15}, {16, 16}, {17, 17}, {18, 18}, {19, 19}});
     //gr.draw({{50, 10}, {49, 11}, {48, 12}, {47, 13}, {46, 14}, {45, 15}, {44, 16}, {43, 17}, {42, 18}, {41, 19}});
 
-    gr.draw(sq);
+    // gr.draw(circ);
+    gr.draw(squ);
+    // gr.draw(rect2);
     std::getchar();
     return 0;
     /*

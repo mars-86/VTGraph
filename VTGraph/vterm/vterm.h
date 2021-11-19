@@ -42,6 +42,7 @@ public:
 	virtual void put_buffer(const std::vector<gfx::Point2D>& points)
 	{
 	    auto buf = points;
+	    /*
 	    int y = buf[0].get_y(), remainder = y % _ratio;
         if (remainder) buf[0].set_y(y - remainder);
 	    for(int i = 1; i < buf.size(); ++i) {
@@ -56,7 +57,7 @@ public:
 	    for(auto i : buf) {
             std::cout << '{' << i.get_x() << " " << i.get_y() << '}' << " ";
 	    }
-	    std::getchar();
+	    std::getchar();*/
         for(auto i : buf) _buffer[_cs.cs_col * (i.get_y() - 1) + i.get_x() - 1] = 1;
 	}
 

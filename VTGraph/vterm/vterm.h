@@ -7,6 +7,12 @@
 #include "../os/os.h"
 #include "../gfx/point2d.h"
 
+#ifdef _WIN32
+#define _STDOUT_HANDLE STD_OUTPUT_HANDLE
+#else
+#define _STDOUT_HANDLE 1
+#endif // _WIN32
+
 namespace vterm {
 
 class VTerm : public Command {
@@ -15,7 +21,7 @@ public:
 	{
 	    set_screen_buffer(VTERM_ALTERNATE_SCREEN_BUFFER);
 	    set_cursor_visibility(VTERM_CURSOR_HIDE);
-	    _stdh = os::get_std_handle(STD_OUTPUT_HANDLE);
+	    _stdh = os::get_std_handle(_STDOUT_HANDLE);
 	    os::get_container_size(_stdh, &_cs);
 	    _buffer.resize(_cs.cs_col * _cs.cs_row, 0);
 	    _ratio = floor(_cs.cs_col / _cs.cs_row);
@@ -106,7 +112,11 @@ private:
 	}
     std::vector<int> _buffer;
     std::vector<int> _points_buffer;
+#ifdef _WIN32
     HANDLE _stdh;
+#else
+    void *_stdh;
+#endif // _WIN32
     os::ContainerSize _cs;
     int _ratio;
 

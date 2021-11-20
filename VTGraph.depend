@@ -339,3 +339,331 @@
 1637263380 source:g:\programacion\cpp\github\vtgraph\vtgraph\gfx\shaper.cpp
 	"shaper.h"
 
+1636843116 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/base/allocator_block.cpp
+	<iostream>
+	"allocator_block.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/base/allocator_block.h
+	<iostream>
+
+1636843116 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/base/debug_tools.c
+	<stdio.h>
+	<string.h>
+	<stdarg.h>
+	"debug_tools.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/base/debug_tools.h
+	"memory_manager.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/base/memory_manager.h
+	"allocator_block.h"
+
+1636843116 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/base/memory_manager.cpp
+	<iostream>
+	<cstdlib>
+	"memory_manager.h"
+
+1636843116 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/color.cpp
+	"color.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/color.h
+	"rgb.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/rgb.h
+
+1637435646 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/win32.cpp
+	"win32.h"
+	<stdio.h>
+	<stdio.h>
+
+1637435363 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/win32.h
+	<windows.h>
+	"platform.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/platform.h
+	"types.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/types.h
+	<stdint.h>
+
+1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/x11.c
+	"x11.h"
+	<stdio.h>
+	<linux/kd.h>
+	<termios.h>
+	<fcntl.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<poll.h>
+	<X11/Xlib.h>
+	<stdlib.h>
+	<sys/time.h>
+	<sys/types.h>
+	<unistd.h>
+
+1637437403 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/x11.h
+	<unistd.h>
+	"platform.h"
+
+1637436412 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/x11.cpp
+	"x11.h"
+	<stdio.h>
+	<linux/kd.h>
+	<termios.h>
+	<fcntl.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<stdlib.h>
+	<sys/time.h>
+	<sys/types.h>
+
+1636843116 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/component.cpp
+	"component.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/component.h
+	"region.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/region.h
+	"../gfx/rect.h"
+	"../gfx/point2d.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/rect.h
+	<vector>
+	"shape2d.h"
+	"line.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/shape2d.h
+	<vector>
+	"shape.h"
+	"point2d.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/shape.h
+	<iostream>
+	"color.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/point2d.h
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/line.h
+	<cmath>
+	"shape2d.h"
+
+1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/container.cpp
+	"container.h"
+	<iostream>
+	<algorithm>
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/container.h
+	<iostream>
+	<vector>
+	"component.h"
+	"ui_component.h"
+	"charset.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/ui_component.h
+	<string>
+	"component.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/charset.h
+
+1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/drawer.cpp
+	<iostream>
+	<cmath>
+	<thread>
+	<chrono>
+	<cstdarg>
+	<stdlib.h>
+	"../ui/drawer.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/drawer.h
+
+1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/canvas.cpp
+	<iostream>
+	<cmath>
+	<thread>
+	<chrono>
+	<cstdarg>
+	<stdlib.h>
+	"../ui/canvas.h"
+	"../base/base.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/canvas.h
+	<iostream>
+	<vector>
+	<string>
+	"../vterm/vterm.h"
+	"../gfx/gfx.h"
+	"layer.h"
+	"../base/debug_tools.h"
+
+1637437616 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/vterm/vterm.h
+	<cmath>
+	"command.h"
+	"../os/os.h"
+	"../gfx/point2d.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/vterm/command.h
+	"sequences.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/vterm/sequences.h
+	<string>
+
+1637434722 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/os.h
+	"x11.h"
+	"win32.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/gfx.h
+	"shape2d.h"
+	"shape3d.h"
+	"point2d.h"
+	"point3d.h"
+	"line.h"
+	"rect.h"
+	"square.h"
+	"circle.h"
+	"ellipse.h"
+	"parable.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/shape3d.h
+	<vector>
+	"shape.h"
+	"point3d.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/point3d.h
+	"point2d.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/square.h
+	<vector>
+	"rect.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/circle.h
+	<cmath>
+	"shape2d.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/ellipse.h
+	"shape2d.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/parable.h
+	<cmath>
+	<iostream>
+	"shape2d.h"
+	"point2d.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/layer.h
+	<string>
+	<vector>
+	"graphic.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/graphic.h
+	<vector>
+	"../gfx/point2d.h"
+	"../gfx/point3d.h"
+	"../gfx/line.h"
+	"../gfx/rect.h"
+	"../vterm/vterm.h"
+	"region.h"
+	"container.h"
+	"ui_component.h"
+	"euclidean_space.h"
+	"menubar.h"
+	"table.h"
+	"../gfx/shape2d.h"
+
+1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/euclidean_space.h
+	"ui_component.h"
+	"geometric.h"
+	"layer.h"
+	"../gfx/point2d.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/geometric.h
+	<vector>
+	"../gfx/gfx.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/menubar.h
+	<vector>
+	"bar.h"
+	"menu.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/bar.h
+	"ui_component.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/menu.h
+	<string>
+	<vector>
+	"ui_component.h"
+	"menu_item.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/menu_item.h
+	"item.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/item.h
+	"ui_component.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/table.h
+	<vector>
+	<string>
+	"ui_component.h"
+
+1636843116 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/base/base.h
+	<iostream>
+	<string>
+	<cstring>
+	<cstdarg>
+
+1637293112 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/euclidean_space.cpp
+	"euclidean_space.h"
+
+1637293112 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/frame.cpp
+	"frame.h"
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/frame.h
+	<map>
+	<string>
+	"container.h"
+	"graphic.h"
+	"ui_component.h"
+
+1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/geometric.cpp
+	"geometric.h"
+
+1637293112 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/graphic.cpp
+	"graphic.h"
+	<cmath>
+
+1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/menubar.cpp
+	"menubar.h"
+
+1637437644 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/main.cpp
+	<iostream>
+	<vector>
+	<cassert>
+	<cmath>
+	"ui/ui.h"
+	"gfx/gfx.h"
+	"os/os.h"
+	"vterm/vterm.h"
+	"ui/graphic.h"
+	<thread>
+	<ctime>
+
+1636843203 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/ui.h
+	"canvas.h"
+	"graphic.h"
+	"table.h"
+	"euclidean_space.h"
+	"region.h"
+	"frame.h"
+	"menubar.h"
+	"menu.h"
+	"menu_item.h"
+
+1636843116 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/region.cpp
+
+1637293112 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/space2d.cpp
+	"euclidean_space.h"
+
+1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/table.cpp
+	"table.h"
+
+1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/ui_component.cpp
+	"ui_component.h"
+

@@ -2,6 +2,8 @@
 
 #ifdef __linux__
 
+#ifdef __x11__
+
 #include <stdio.h>
 #include <linux/kd.h>
 #include <termios.h>
@@ -32,7 +34,7 @@ void* _init_instance(ContainerSize* cs)
 struct winsize get_window_size(void)
 {
 	struct winsize size;
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);	
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 	return size;
 }
 
@@ -44,7 +46,7 @@ int _init_event_handler(void)
 	}
 
 	//Window rootw = XDefaultRootWindow(display);
-	
+
 	Window *child_w = NULL;
 	unsigned int count_w;
 	//Status q_stat = XQueryTree(display, rootw, NULL, NULL, NULL, &count_w);
@@ -52,12 +54,12 @@ int _init_event_handler(void)
 	Window rootw;
 	screen = DefaultScreen (display);
 	rootw = RootWindow (display, screen);
-	
+
 	//if (q_stat == 0 )
 	//	return 1;
 
 	//XFree(child_w);
-	
+
 	XEvent evt;
 	int err = XGrabPointer(
 				display,
@@ -74,11 +76,11 @@ int _init_event_handler(void)
 		// ...
 	}
 	while(1) {
-		
+
 	XNextEvent(display, &evt);
     // ...
 	printf("Absolute coordinates: %d,%d\n", evt.xbutton.x_root, evt.xbutton.y_root);
-	
+
 	}
     /*struct termios tty_attr;
     int flags;*/
@@ -146,5 +148,7 @@ void _close_display(void)
 }
 
 } // namespace os
+
+#endif // __x11__
 
 #endif // __linux__

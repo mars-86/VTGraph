@@ -13,7 +13,7 @@
 
 #define PI 3.14
 
-LRESULT CALLBACK term_proc(HANDLE, UINT, WPARAM, LPARAM);
+// LRESULT CALLBACK term_proc(HANDLE, UINT, WPARAM, LPARAM);
 
 int main(int argc, char* argv[]) {
 

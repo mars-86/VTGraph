@@ -1,6 +1,8 @@
 #include "win32.h"
 #include <stdio.h>
 
+#ifdef _WIN32
+
 namespace os {
 
 HANDLE get_std_handle(unsigned long handle)
@@ -188,3 +190,5 @@ while (GetMessage(&msg, NULL, 0, 0))
 //UnhookWindowsHookEx(ms_hook);
 */
 }
+
+#endif // _WIN32

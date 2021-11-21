@@ -23,6 +23,7 @@ public:
 	    set_cursor_visibility(VTERM_CURSOR_HIDE);
 	    _stdh = os::get_std_handle(_STDOUT_HANDLE);
 	    os::get_container_size(_stdh, &_cs);
+	    std::cout << "R:" << _cs.cs_row << " C:" << _cs.cs_col << std::endl;
 	    _buffer.resize(_cs.cs_col * _cs.cs_row, 0);
 	    _ratio = floor(_cs.cs_col / _cs.cs_row);
     }

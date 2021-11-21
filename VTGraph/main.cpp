@@ -42,11 +42,10 @@ int main(int argc, char* argv[]) {
     }
 
     gfx::GFX gfx(size.cs_col / size.cs_row);
-    auto squ = gfx.rectangle(60, 25, 25, 25, { 150, 170, 200 });
+    auto squ = gfx.rectangle(30, 10, 25, 25, { 150, 170, 200 });
     auto circ = gfx.ellipse(50, 15, 15, 18, { 230, 40, 86 });
     gfx::Rect rect2(100, 24, 25, 25, { 150, 170, 200 });
 
-    std::getchar();
     gfx::Line line(70, 60, 40, 40, { 230, 40, 86 });
     gfx::Rect rect(25, 25, 20, 10, { 50, 150, 200, 0 });
     gfx::Circle circle(50, 15, 10, { 230, 40, 86 });
@@ -59,12 +58,13 @@ int main(int argc, char* argv[]) {
     //gr.draw({{10, 10}, {11, 10}, {12, 10}, {13, 10}, {14, 10}, {15, 10}, {16, 10}, {17, 10}, {18, 10}, {19, 10}});
     //gr.draw({{10, 10}, {11, 11}, {12, 12}, {13, 13}, {14, 14}, {15, 15}, {16, 16}, {17, 17}, {18, 18}, {19, 19}});
     //gr.draw({{50, 10}, {49, 11}, {48, 12}, {47, 13}, {46, 14}, {45, 15}, {44, 16}, {43, 17}, {42, 18}, {41, 19}});
-
+    // std::cout << "ACA2\n";
     // gr.draw(circ);
-    gr.draw(squ);
+    // gr.draw(squ);
+    // std::cout << "ACA3\n";
     // gr.draw(rect2);
-    std::getchar();
-    return 0;
+    // std::getchar();
+    // return 0;
     /*
     for (int i = 41; i < 100; ++i) {
         gr.draw(rect);
@@ -73,15 +73,16 @@ int main(int argc, char* argv[]) {
         rect.translate({i, 25});
     }
     return 0;
-    for (int i = 0, j= 1; i < 2; ++i) {
-        while (j < 81) {
-            gfx::Line line3(1, 40, 200, j++, { 230, 40, 86 });
+    */
+    for (int i = 0, j= 30; i < 10; ++i) {
+        while (j < 50) {
+            gfx::Line line3(1, 30, 200, j++, { 230, 40, 86 });
             gr.draw(line3);
             // Sleep(33);
             gr.erase(line3);
         }
-        while (j > 1) {
-            gfx::Line line3(1, 40, 200, j--, { 230, 40, 86 });
+        while (j > 10) {
+            gfx::Line line3(1, 30, 200, j--, { 230, 40, 86 });
             gr.draw(line3);
             // Sleep(33);
             gr.erase(line3);
@@ -89,7 +90,7 @@ int main(int argc, char* argv[]) {
     }
     return 0;
     std::getchar();
-    */
+
 	ui::Frame frame("VIRTUAL TERMINAL GRAPHICS", size.cs_col, size.cs_row);
 	ui::EuclideanSpace eusp2d(ui::EUCLIDEAN_CONTEXT::_2D, frame.get_max_width() - 1, frame.get_max_height() - 2, ui::POSITION::TOP);
 	eusp2d.draw_rect(5, 10, 20, 3, {150, 100, 200});

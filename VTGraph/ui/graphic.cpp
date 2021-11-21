@@ -64,6 +64,7 @@ void Graphic::draw(const Shape2D& shape)
     std::string s;
     for (auto i : get_screen_buffer()) s += (i ? u8"\u2550" : " ");
     std::cout << s;
+    // for (auto i : shape.get_bounds()) draw(u8"\u2550", i.get_x(), i.get_y());
     set_cursor_pos(1, 1);
 }
 

@@ -495,7 +495,7 @@
 	"layer.h"
 	"../base/debug_tools.h"
 
-1637437616 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/vterm/vterm.h
+1637442377 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/vterm/vterm.h
 	<cmath>
 	"command.h"
 	"../os/os.h"
@@ -625,14 +625,14 @@
 1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/geometric.cpp
 	"geometric.h"
 
-1637293112 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/graphic.cpp
+1637463850 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/graphic.cpp
 	"graphic.h"
 	<cmath>
 
 1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/menubar.cpp
 	"menubar.h"
 
-1637437644 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/main.cpp
+1637463809 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/main.cpp
 	<iostream>
 	<vector>
 	<cassert>
@@ -666,4 +666,13 @@
 
 1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/ui_component.cpp
 	"ui_component.h"
+
+1637441190 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/linux.cpp
+	"linux.h"
+	<sys/ioctl.h>
+	<unistd.h>
+
+1637438005 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/os/linux.h
+	<unistd.h>
+	"platform.h"
 

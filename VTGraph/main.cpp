@@ -33,59 +33,82 @@ int main(int argc, char* argv[]) {
     // std::cout << bra;
     std::vector<gfx::Point2D> sine;
     double n1 = 5;
-    for (double i = 0; i < PI * 4; i += .03) {
+    for (double i = 0; i < PI * 4; i += 1) {
         sine.push_back({ (int)(n1), (int)(25 + 10 * (sin(i))) });
         // canvas.draw(line2);
         //x1 = (int)n;
         //y1 = (int)(80 + 50 * sin(i));
-        n1 += 0.314;
+        n1 += 1;
     }
 
-    gfx::GFX gfx(size.cs_col / size.cs_row);
-    auto squ = gfx.rectangle(30, 10, 25, 25, { 150, 170, 200 });
-    auto circ = gfx.ellipse(50, 15, 15, 18, { 230, 40, 86 });
-    gfx::Rect rect2(100, 24, 25, 25, { 150, 170, 200 });
+    std::getchar();
+    gfx::GFX gfx(1);
+    auto squ = gfx.rectangle(30, 10, 6, 6, { 150, 170, 200 });
+    auto circ = gfx.ellipse(50, 60, 15, 18, { 230, 40, 86 });
+    auto lin = gfx.line(5, 1, 5, 30, { 230, 40, 86 });
+    // gfx::Rect rect2(100, 24, 25, 25, { 150, 170, 200 });
 
-    gfx::Line line(70, 60, 40, 40, { 230, 40, 86 });
-    gfx::Rect rect(25, 25, 20, 10, { 50, 150, 200, 0 });
-    gfx::Circle circle(50, 15, 10, { 230, 40, 86 });
+    gfx::Line line(5, 10, 40, 30, { 230, 40, 86 });
+    gfx::Rect rect(100, 100, 20, 10, { 50, 150, 200, 0 });
+    gfx::Circle circle(50, 50, 30, { 230, 40, 86 });
     gfx::Parable parable(33, 20, 0, 0, { 230, 40, 86 });
-    gfx::Parable parable2(100, 20, 115, 115, { 230, 40, 86 });
+    gfx::Parable parable2(100, 20, 500, 500, { 230, 40, 86 });
     gfx::Line line3(70, 10, 200, 30, { 230, 40, 86 });
-    gfx::Square sq(60, 25, 25, { 150, 170, 200 });
+    gfx::Square sq(100, 100, 2, { 150, 170, 200 });
+    gfx::Ellipse elipse2(100, 50, 30, 30, { 230, 40, 86 });
+    gfx::Parable parabl(33, 20, 0, 0, { 230, 40, 86 });
 
-    ui::Graphic gr(nullptr, size.cs_col, size.cs_row);
+    ui::Graphic gr(2, 4);
     //gr.draw({{10, 10}, {11, 10}, {12, 10}, {13, 10}, {14, 10}, {15, 10}, {16, 10}, {17, 10}, {18, 10}, {19, 10}});
     //gr.draw({{10, 10}, {11, 11}, {12, 12}, {13, 13}, {14, 14}, {15, 15}, {16, 16}, {17, 17}, {18, 18}, {19, 19}});
     //gr.draw({{50, 10}, {49, 11}, {48, 12}, {47, 13}, {46, 14}, {45, 15}, {44, 16}, {43, 17}, {42, 18}, {41, 19}});
     // std::cout << "ACA2\n";
-    // gr.draw(circ);
-    // gr.draw(squ);
+    // gr.draw(elipse2);
+    // gr.draw(circle);
+    // gr.draw(sq);
+    // gr.print();
+    // gr.draw(line3);
     // std::cout << "ACA3\n";
     // gr.draw(rect2);
+    // gr.print();
     // std::getchar();
     // return 0;
-    /*
+/*
     for (int i = 41; i < 100; ++i) {
         gr.draw(rect);
-        Sleep(33);
+        usleep(333333);
+        // Sleep(33);
         gr.erase(rect);
         rect.translate({i, 25});
     }
     return 0;
-    */
-    for (int i = 0, j= 30; i < 10; ++i) {
-        while (j < 50) {
-            gfx::Line line3(1, 30, 200, j++, { 230, 40, 86 });
+*/
+    for (int i = 0, j= 1; i < 10; ++i) {
+        while (j < 200) {
+            gfx::Line line3(1, 50, 200, j++, { 230, 40, 86 });
             gr.draw(line3);
+            gr.draw(elipse2);
+            gr.draw(circle);
+            gr.draw(sq);
+            gr.print();
+            usleep(333);
             // Sleep(33);
             gr.erase(line3);
+            gr.print();
+            // usleep(33);
         }
-        while (j > 10) {
-            gfx::Line line3(1, 30, 200, j--, { 230, 40, 86 });
+        while (j > 1) {
+            gfx::Line line3(1, 50, 200, j--, { 230, 40, 86 });
             gr.draw(line3);
+            gr.draw(elipse2);
+            gr.draw(circle);
+            gr.draw(sq);
+            gr.print();
+            usleep(333);
             // Sleep(33);
             gr.erase(line3);
+            gr.print();
+            // usleep(33);
         }
     }
     return 0;
@@ -139,8 +162,8 @@ int main(int argc, char* argv[]) {
         gfx::Line line4(1, 70, 130, 70, { 230, 40, 86 });
         gfx::Circle circle(35, 35, 30, { 230, 40, 86 });
         gfx::Ellipse elipse1(45, 40, 3, 10, { 230, 40, 86 });
-        gfx::Ellipse elipse2(25, 40, 3, 10, { 230, 40, 86 });
-        gfx::Parable parable(33, 20, 0, 0, { 230, 40, 86 });
+        // gfx::Ellipse elipse2(25, 40, 3, 10, { 230, 40, 86 });
+        // gfx::Parable parable(33, 20, 0, 0, { 230, 40, 86 });
         //void (CCanvas:: * dw)(gfx::Shape2D&) = &CCanvas::draw;
         // std::srand((time_t)std::time((time_t*)nullptr));
 

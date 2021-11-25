@@ -34,7 +34,8 @@ public:
 
 	gfx::Line line(T x1, T y1, T x2, T y2, const Color& color)
 	{
-        return gfx::LineT<T>(x1, y1, x2, y2, color);
+        T y1t = floor(y1 / _ratio), div = y2 / _ratio, y2t = (div > y1) ? div : y2;
+        return gfx::LineT<T>(x1, y1t, x2, y2t, color);
 	}
 
 	gfx::Parable parable(T x, T y, T rx, T ry, const Color& color)

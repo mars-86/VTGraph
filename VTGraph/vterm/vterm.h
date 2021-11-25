@@ -23,7 +23,6 @@ public:
 	    set_cursor_visibility(VTERM_CURSOR_HIDE);
 	    _stdh = os::get_std_handle(_STDOUT_HANDLE);
 	    os::get_container_size(_stdh, &_cs);
-	    std::cout << "R:" << _cs.cs_row << " C:" << _cs.cs_col << std::endl;
 	    _buffer.resize(_cs.cs_col * _cs.cs_row, 0);
 	    _ratio = floor(_cs.cs_col / _cs.cs_row);
     }
@@ -48,29 +47,12 @@ public:
 
 	virtual void put_buffer(const std::vector<gfx::Point2D>& points)
 	{
-	    auto buf = points;
-	    /*
-	    int y = buf[0].get_y(), remainder = y % _ratio;
-        if (remainder) buf[0].set_y(y - remainder);
-	    for(int i = 1; i < buf.size(); ++i) {
-            y = buf[i].get_y(), remainder = y % _ratio;
-            if (remainder) buf[i].set_y(y - remainder);
-            // if (buf[i].get_y() - buf[i - 1].get_y() != 0) buf[i].set_y(buf[i].get_y() - (_ratio - 1));
-            // std::cout << buf[i].get_y() - buf[i - 1].get_y() << " ";
-            if (!(buf[i].get_y() ^ buf[i - 1].get_y()) && !(buf[i].get_x() ^ buf[i - 1].get_x())) buf.erase(buf.begin() + i), --i;
-	    }
-	    std::cout << buf.size() << std::endl;
-	    std::getchar();
-	    for(auto i : buf) {
-            std::cout << '{' << i.get_x() << " " << i.get_y() << '}' << " ";
-	    }
-	    std::getchar();*/
-        for(auto i : buf) _buffer[_cs.cs_col * (i.get_y() - 1) + i.get_x() - 1] = 1;
+        for(auto i : points) if ((i.get_y() < (_cs.cs_row - 1)) && (i.get_x() < (_cs.cs_col - 1)))_buffer[_cs.cs_col * (i.get_y() - 1) + i.get_x() - 1] = 1;
 	}
 
 	virtual void erase_buffer(const std::vector<gfx::Point2D>& points)
 	{
-        for(auto i : points) _buffer[_cs.cs_col * (i.get_y() - 1) + i.get_x() - 1] = 0;
+        for(auto i : points) if ((i.get_y() < (_cs.cs_row - 1)) && (i.get_x() < (_cs.cs_col - 1)))_buffer[_cs.cs_col * (i.get_y() - 1) + i.get_x() - 1] = 0;
 	}
 
 	virtual std::vector<int>& get_screen_buffer(void)
@@ -92,6 +74,16 @@ public:
         return _points_buffer;
 	}
 
+	unsigned int get_width(void)
+	{
+        return _cs.cs_col;
+	}
+
+	unsigned int get_height(void)
+	{
+        return _cs.cs_row;
+	}
+
 protected:
 	typedef struct _Symbol {
 		char* val;
@@ -99,11 +91,7 @@ protected:
 		int y;
 	} dwchar_t;
 
-	typedef struct _Shape {
-        gfx::Point2D point;
-
-
-    } shape_t;
+    std::vector<int> _buffer;
 
 private:
 	friend std::ostream& operator<<(std::ostream& out, const dwchar_t& symbol)
@@ -111,7 +99,6 @@ private:
 		// std::flush for cursor fluency
 		return out << VTERM_ESCAPE << "[" << symbol.y << ";" << symbol.x << "H" << symbol.val << std::flush;
 	}
-    std::vector<int> _buffer;
     std::vector<int> _points_buffer;
 #ifdef _WIN32
     HANDLE _stdh;

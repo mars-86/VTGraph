@@ -21,10 +21,17 @@ namespace ui {
 using namespace gfx;
 using namespace vterm;
 
+constexpr unsigned int pixel_map[4][2] = {
+    {0x01, 0x08},
+    {0x02, 0x10},
+    {0x04, 0x20},
+    {0x40, 0x80}
+};
+
 class Graphic : public VTerm {
 public:
-	Graphic(short dwable_w, short dwable_h);
-	Graphic(void *context, short dwable_w, short dwable_h);
+	Graphic(short w_ratio, short h_ratio);
+	Graphic(void *context, short w_ratio, short h_ratio);
 	~Graphic();
 
 	void draw(const char *s, int x, int y);
@@ -50,7 +57,10 @@ public:
 	const Region& get_region(const gfx::Rect& rect);
 
 private:
+    short _w_ratio, _h_ratio;
 	short _dwable_w, _dwable_h;
+	int _linear_length;
+	std::string _dwable;
 };
 
 } // namespace ui

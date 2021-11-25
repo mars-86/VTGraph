@@ -427,7 +427,7 @@
 	"../gfx/rect.h"
 	"../gfx/point2d.h"
 
-1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/rect.h
+1637862370 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/rect.h
 	<vector>
 	"shape2d.h"
 	"line.h"
@@ -495,7 +495,7 @@
 	"layer.h"
 	"../base/debug_tools.h"
 
-1637442377 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/vterm/vterm.h
+1637863467 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/vterm/vterm.h
 	<cmath>
 	"command.h"
 	"../os/os.h"
@@ -511,7 +511,7 @@
 	"x11.h"
 	"win32.h"
 
-1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/gfx.h
+1637722409 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/gfx/gfx.h
 	"shape2d.h"
 	"shape3d.h"
 	"point2d.h"
@@ -553,7 +553,7 @@
 	<vector>
 	"graphic.h"
 
-1637293112 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/graphic.h
+1637861785 /home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/graphic.h
 	<vector>
 	"../gfx/point2d.h"
 	"../gfx/point3d.h"
@@ -625,14 +625,15 @@
 1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/geometric.cpp
 	"geometric.h"
 
-1637463850 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/graphic.cpp
+1637874198 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/graphic.cpp
 	"graphic.h"
 	<cmath>
+	<cstring>
 
 1636843203 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/ui/menubar.cpp
 	"menubar.h"
 
-1637463809 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/main.cpp
+1637875584 source:/home/mariano/Documents/Programming/C++/VTGraph/VTGraph/main.cpp
 	<iostream>
 	<vector>
 	<cassert>
